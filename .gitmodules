@@ -10,3 +10,6 @@
 [submodule "makeise"]
 	path = makeise
 	url = https://github.com/RPeschke/makeise.git
+[submodule "QBLink"]
+	path = QBLink
+	url = https://github.com/nathankp/QBLink.git
