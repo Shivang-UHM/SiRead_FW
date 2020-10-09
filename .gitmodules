@@ -1,0 +1,12 @@
+[submodule "firmware-ethernet"]
+	path = firmware-ethernet
+	url = https://github.com/RPeschke/firmware-ethernet.git
+[submodule "vhdl_csv_io"]
+	path = vhdl_csv_io
+	url = https://github.com/RPeschke/vhdl_csv_io.git
+[submodule "vhdl_build_system"]
+	path = vhdl_build_system
+	url = https://github.com/RPeschke/vhdl_build_system.git
+[submodule "makeise"]
+	path = makeise
+	url = https://github.com/RPeschke/makeise.git
