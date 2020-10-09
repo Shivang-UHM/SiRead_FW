@@ -1,0 +1,13 @@
+jtag.sh
+build_implementation.sh
+build_synt.sh
+jtag.sh
+make_implementation.sh
+make_simulation.sh
+make_test_bench.sh
+run_on_hardware.sh
+run_simulation.sh
+run_test_cases.sh
+startNewRun.sh
+update_test_cases.sh
+
