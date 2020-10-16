@@ -155,7 +155,7 @@ signal sync : sl := '0'; -- synchronize timestamp counters on all DCs
 signal cmd_target_type : sl := '0';
 --for one-shot
 signal soft_trigger : std_logic :='1';
-signal done : std_logic := '0';
+--signal done : std_logic := '0';
 
 --attribute keep_hierarchy: boolean;
 --attribute keep_hierarchy of Behavioral: architecture is TRUE;
@@ -223,14 +223,14 @@ CLOCK_FANOUT : entity work.clk_Div
 	 
 global_event <= (others => evntFlag);
 
-DC_reset_process : process(internal_data_clk) --unused for now 10/01
---variable counter : integer range 0 to 2 := 0;
-begin 
-	IF rising_edge(internal_data_clk) THEN
-		sync <= CtrlRegister(2)(8);
-	   QBrst <= CtrlRegister(2)(NUM_DCs downto 0);
-	END IF;
-end process;
+--DC_reset_process : process(internal_data_clk) --unused for now 10/01
+----variable counter : integer range 0 to 2 := 0;
+--begin 
+--	IF rising_edge(internal_data_clk) THEN
+--		sync <= CtrlRegister(2)(8);
+--	   QBrst <= CtrlRegister(2)(NUM_DCs downto 0);
+--	END IF;
+--end process;
 
 ----------------------------
 ------One-shot ckt----------
@@ -238,9 +238,9 @@ end process;
 One_Shot : entity work.OneShot_ckt
 port map (
 	clk => internal_data_clk,
-	rst => reset,
+--	rst => reset,
 	trigger => soft_trigger,
-	done => done,
+--	done => done,
 	pulse => QBrst(0)
 	
 );

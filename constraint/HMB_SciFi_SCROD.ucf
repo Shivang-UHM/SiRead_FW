@@ -1,0 +1,473 @@
+  
+  ###########################################################################
+#Pin mappings and timing constraints here are based on the SCROD_revA5.   #
+# Streamlined for Bytelane communication to HMB Daughtercards             #
+###########################################################################
+# GSV 9/14/2018 
+
+## HMB SciFi Plane version:  HMB_SciFi_SCROD.ucf
+## Needs mods for 8 DC
+
+####################CLOCK IN/OUT SIGNALS###################################
+SYSTEM_JITTER = 1000 ps;
+
+# IO constraints 
+
+##########################Constrained by CLK Fanout####################
+#NET "internal_fpga_clk" TNM_NET = "internal_fpga_clk";
+#TIMESPEC TS_FPGA_CLK = PERIOD "internal_fpga_clk" 8 ns HIGH 50 %;#125MHz
+
+#NET "internal_data_clk" TNM_NET = "internal_data_clk";
+#TIMESPEC TS_DATA_CLK = PERIOD "internal_data_clk" 40 ns HIGH 50 %;#25MHz #was HIGH 40 %
+####################################################################
+
+#NET "MASTER_CLK_P" TNM_NET = "MASTER_CLK_P";
+#TIMESPEC "TS_MASTER_CLK_P" = PERIOD "MASTER_CLK_P" 8 ns HIGH 50 %;#125MHz
+#
+NET "DC_CLK_P<0>" TNM_NET = "DC_CLK_P";
+TIMESPEC "TS_DATA_CLK" = PERIOD "DC_CLK_P<0>" 40 ns HIGH 50 %;#25MHz
+
+# input Clock
+#NET "MASTER_CLK_P" 		  LOC = U23 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #125MHz
+#NET "MASTER_CLK_N" 		  LOC = U24 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; 
+
+#NET "CLK_IN1_P" TNM_NET = "CLK_IN1_P";
+#TIMESPEC "TS_CLK_IN1_P" = PERIOD "CLK_IN1_P" 8.0 ns HIGH 50% INPUT_JITTER 80.0ps;
+
+##Ethernet Module Clock Constraints
+NET "gtClkP" TNM_NET="gtClkP";
+TIMESPEC "TS_gtClkP" = PERIOD "gtClkP" 8 ns HIGH 50 %; #assumes same period as the old, internally generated gtp clock
+##########################################################################
+### Gigabit Transceiver (following RPeschke Example Project UCF)
+NET "gtTxP"     LOC = B6;
+NET "gtTxN"     LOC = A6;
+NET "gtRxP"     LOC = D7;
+NET "gtRxN"     LOC = C7;
+NET "gtClkP"    LOC = D11;
+NET "gtClkN"    LOC = C11;
+NET "txDisable" LOC = E8 | IOSTANDARD = LVCMOS33;
+###not including fabClk in PORT MAP of Top file, fabClk is kept constantly still from inside the Top file. 
+###########################################################################
+### Daughtercard Links (include old/alias for reference
+
+##### Daughtercard 1
+# CLK
+## NET "SC_DC_DATA_P<0>" LOC = AA15; #SC_DC_DATA1P, J2_085_AA15_L28P
+## NET "SC_DC_DATA_N<0>" LOC = AB15; #SC_DC_DATA1N, J2_086_AB15_L28N
+# SCROD RJ45
+#NET "DC_CLK_P<0>" LOC = AA15 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #SC_DC_DATA1P, J2_085_AA15_L28P
+#NET "DC_CLK_N<0>" LOC = AB15 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #SC_DC_DATA1N, J2_086_AB15_L28N
+	#SCROD mRICH Board
+NET "DC_CLK_P<0>" LOC = E23 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE"; #SC_DC_DATA1P, J2_085_AA15_L28P	
+NET "DC_CLK_N<0>" LOC = E24 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE"; #SC_DC_DATA1N, J2_086_AB15_L28N
+
+# TX  (to DC)
+## NET "SC_DC_RX_P<0>" LOC = V14; #SC_DC_RX1_P, J2_089_V14_L26P 
+## NET "SC_DC_RX_N<0>" LOC = V15; #SC_DC_RX1_N, J2_088_V15_L26N
+#SCROD RJ45
+#NET "TX_DC_P<0>" LOC = V14 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";  
+#NET "TX_DC_N<0>" LOC = V15 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; 
+	#SCROD mRICH
+NET "TX_DC_P<0>" LOC = F23 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";  
+NET "TX_DC_N<0>" LOC = G24 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE"; 
+# RX  (from DC)
+## NET "ORed_Trig_P<0>" LOC = AA19;
+## NET "ORed_Trig_N<0>" LOC = AB19;
+#SCROD RJ45
+#NET "RX_DC_P<0>" LOC = AA19 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";
+#NET "RX_DC_N<0>" LOC = AB19 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";
+
+	#SCROD mRICH
+	NET "RX_DC_P<0>" LOC = J25 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";
+	NET "RX_DC_N<0>" LOC = J26 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";
+# SYNC  (to DC)
+## NET "RJ45_ACK_P<0>" LOC = AA18; ##AA18_L20P
+## NET "RJ45_ACK_N<0>" LOC = AB17; #MAS_ACK1_N, J2_081_AB17_L20N
+NET "SYNC_P<0>" LOC = AA18 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; ##AA18_L20P
+NET "SYNC_N<0>" LOC = AB17 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #MAS_ACK1_N, J2_081_AB17_L20N
+
+#NET "TRGLINK_SYNC" LOC = G23; #testpoint
+#NET "SERIAL_CLK_LCK" LOC = G20; #testpont
+
+
+								
+###### Daughtercard 2
+## CLK
+NET "DC_CLK_P<1>" LOC = C25 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE"; #SC_DC_DATA2P, J2_114_Y12_L33P
+NET "DC_CLK_N<1>" LOC = C26 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE"; #SC_DC_DATA2N, J2_113_AA12_L33N
+
+## TX  (to DC)
+NET "TX_DC_P<1>" LOC = E25 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";#SC_DC_RX2_P, J2_118_AC5_L61P
+NET "TX_DC_N<1>" LOC = E26 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE"; #SC_DC_RX2_N, J2_117_AD5_L61N
+
+## RX  (from DC)
+NET "RX_DC_P<1>" LOC = C2 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";
+NET "RX_DC_N<1>" LOC = C1 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";
+
+## SYNC  (to DC)
+NET "SYNC_P<1>" LOC = W14 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #J2_110_W14_L34P
+NET "SYNC_N<1>" LOC = Y13 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #J2_109_Y13_L34N
+### NET "RJ45_ACK_P<1>" LOC = W14; #--resolved: ERROR conflict    #J2_110_W14_L34P
+### NET "RJ45_ACK_N<1>" LOC = Y13; #MAS_ACK2N,  J2_109_Y13_L34N
+#NET "SYNC_P<1>" LOC = W14; #--resolved: ERROR conflict    #J2_110_W14_L34P
+#NET "SYNC_N<1>" LOC = Y13; #MAS_ACK2N,  J2_109_Y13_L34N
+#
+
+###### Daughtercard 3
+## CLK
+NET "DC_CLK_P<2>" LOC = G2 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";#SC_DC_DATA3P, J2_031_AB13_L36P
+NET "DC_CLK_N<2>" LOC = G1 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE"; #SC_DC_DATA3N, J2_032_AA13_L36N 
+
+## TX  (to DC)
+
+NET "TX_DC_P<2>" LOC = N8 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";
+NET "TX_DC_N<2>" LOC = N7 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";
+## RX  (from DC)
+NET "RX_DC_P<2>" LOC = N5 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";
+NET "RX_DC_N<2>" LOC = N4 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";
+
+## SYNC  (to DC)
+NET "SYNC_P<2>" LOC = W16 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; 
+NET "SYNC_N<2>" LOC = Y16 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; 
+
+#
+###### Daughtercard 4
+## CLK
+NET "DC_CLK_P<3>" LOC = N25 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";
+NET "DC_CLK_N<3>" LOC = N26 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";  
+## TX  (to DC)
+NET "TX_DC_P<3>" LOC =  AA10 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";
+NET "TX_DC_N<3>" LOC = AB11 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";
+## RX  (from DC)
+NET "RX_DC_P<3>" LOC = W8 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";
+NET "RX_DC_N<3>" LOC = W7 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";
+## SYNC  (to DC)
+NET "SYNC_P<3>" LOC = AD6 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; 
+NET "SYNC_N<3>" LOC = AF6 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; 
+########DC RESET for mRICH##########
+#NET "DC_RESET<0>" LOC = AC1;
+#NET "DC_RESET<1>" LOC = V3;
+########## dac interface signals #####################################################
+#NET "DAC_SDI" 			LOC = "P46";
+#NET "DAC_SCLK" 		LOC = "P47";
+#NET "DAC_SYNC" 		LOC = "P48";
+#NET "DAC_LDAC" 		LOC = "P50";
+
+#######PMT Triggers
+#NET "GLOBAL_EVENT_P<0>" LOC = C24| IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #Trig Aux 1
+#NET "GLOBAL_EVENT_N<0>" LOC = D24| IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; 
+#
+#NET "GLOBAL_EVENT_P<1>" LOC = R7 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #Trig Aux 9
+#NET "GLOBAL_EVENT_N<1>" LOC = R6 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";
+#
+#NET "GLOBAL_EVENT_P<2>" LOC = J20 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #Trig Aux 5
+#NET "GLOBAL_EVENT_N<2>" LOC = J22 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; 
+#
+#NET "GLOBAL_EVENT_P<3>" LOC = AA23 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #Trig Aux 13 (schematic has pinout for 150 package, but we are using 150T)
+#NET "GLOBAL_EVENT_N<3>" LOC = AA24 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; 
+
+#
+##### Daughtercard 5
+## CLK
+#	#NET "SC_DC_CLK_P<0>" LOC = U25  | IOSTANDARD = LVDS_25; #J4_083_U25_GCLK+, 2.5V
+#	#NET "SC_DC_CLK_N<0>" LOC = U26  | IOSTANDARD = LVDS_25; #J4_082_U26_GCLK-, 2.5V
+#	NET "DC_CLK_P<4>" LOC = U25  | IOSTANDARD = LVDS_25; #J4_083_U25_GCLK+
+#	NET "DC_CLK_N<4>" LOC = U26  | IOSTANDARD = LVDS_25; #J4_082_U26_GCLK-
+## TX
+#	#NET "AUX_P<0>" LOC = V23; #J4_061_V23_GCLK+ 
+#	#NET "AUX_N<0>" LOC = V24; #J4_062_V24_GCLK-
+#	NET "TX_DC_P<4>" LOC = V23; #J4_061_V23_GCLK+ 
+#	NET "TX_DC_N<4>" LOC = V24; #J4_062_V24_GCLK-
+## RX
+#	#NET "DC_SC_DATA_P<0>" LOC = Y11; #J2_094_Y11_L41P
+#	#NET "DC_SC_DATA_N<0>" LOC = AA11; #J2_093_AA11_L41N
+#	NET "RX_DC_P<4>" LOC = Y11; #J2_094_Y11_L41P 
+#	NET "RX_DC_N<4>" LOC = AA11; #J2_093_AA11_L41N
+## SYNC
+#	#NET "DC_SC_TX_P<0>" LOC = AA9; #J2_102_AA9_L47P
+#	#NET "DC_SC_TX_N<0>" LOC = AB9; #J2_101_AB9_L47N
+#	NET "SYNC_P<4>" LOC = AA9; #J2_102_AA9_L47P
+#	NET "SYNC_N<4>" LOC = AB9; #J2_101_AB9_L47N
+#	
+##### Daughtercard 6
+## CLK
+#	#NET "SC_DC_CLK_P<1>" LOC = C13  | IOSTANDARD = LVDS_25; #J3_064_C13_GCLK+, 3.3V !?!? 
+#	#NET "SC_DC_CLK_N<1>" LOC = A13  | IOSTANDARD = LVDS_25; #J3_065_A13_GCLK-, 3.3V !?!?
+#	NET "DC_CLK_P<5>" LOC = C13  | IOSTANDARD = LVDS_25; #J3_064_C13_GCLK+
+#	NET "DC_CLK_N<5>" LOC = A13  | IOSTANDARD = LVDS_25; #J3_065_A13_GCLK-
+## TX
+#	#NET "AUX_P<1>" LOC = F12; #AUX2_P, J3_069_F12_L31P
+#	#NET "AUX_N<1>" LOC = E12; #AUX2_N, J3_070_E12_L31N
+#	NET "TX_DC_P<5>" LOC = F12; #J3_069_F12_L31P
+#	NET "TX_DC_N<5>" LOC = E12; #J3_070_E12_L31N 
+## RX
+#	#NET "DC_SC_DATA_P<1>" LOC = AA21; #J2_048_AA21_L15P
+#	#NET "DC_SC_DATA_N<1>" LOC = AB21; #J2_047_AB21_L15N
+#	NET "RX_DC_P<5>" LOC = AA21; #J2_048_AA21_L15P
+#	NET "RX_DC_N<5>" LOC = AB21; #J2_047_AB21_L15N 
+## SYNC
+#	#NET "DC_SC_TX_P<1>" LOC = W20; #J2_045_W20_L4P
+#	#NET "DC_SC_TX_N<1>" LOC = Y20; #J2_044_Y20_L4N
+#	NET "SYNC_P<5>" LOC = W20; #J2_045_W20_L4P
+#	NET "SYNC_N<5>" LOC = Y20; #J2_044_Y20_L4N
+#
+##### Daughtercard 7
+## CLK
+#	#NET "SC_DC_CLK_P<2>" LOC = Y17  | IOSTANDARD = LVDS_25; #J2_017_Y17_L16P, 2.5V
+#	#NET "SC_DC_CLK_N<2>" LOC = AA17 | IOSTANDARD = LVDS_25; #J2_019_AA17_L16N, 2.5V
+#	NET "DC_CLK_P<6>" LOC = Y17  | IOSTANDARD = LVDS_25; #J2_017_Y17_L16P
+#	NET "DC_CLK_N<6>" LOC = AA17 | IOSTANDARD = LVDS_25; #J2_019_AA17_L16N
+## TX
+#	#NET "AUX_N<2>" LOC = K6;  #Pin 2/3 N and P were flipped #K6 shows up on the SCROD Rev A5, J7 shows up on BMD
+#	#NET "AUX_P<2>" LOC = J9;   #Pin 2/3 N and P were flipped 
+#	NET "TX_DC_P<6>" LOC = J7;
+#	NET "TX_DC_N<6>" LOC = J9;
+## RX
+#	#NET "DC_SC_DATA_P<2>" LOC = Y9; #DC_SC_DATA3_P, J2_024_Y9_L52P 
+#	#NET "DC_SC_DATA_N<2>" LOC = AA8; #DC_SC_DATA3_N, J2_023_AA8_L52N
+#	NET "RX_DC_P<6>" LOC = Y9; 
+#	NET "RX_DC_N<6>" LOC = AA8; 
+## SYNC
+#	#NET "DC_SC_TX_P<2>" LOC = W10; #J2_021_W10_L50P
+#	#NET "DC_SC_TX_N<2>" LOC = W9; #J2_020_W9_L50N
+#	NET "SYNC_P<6>" LOC = W10; #J2_021_W10_L50P
+#   NET "SYNC_N<6>" LOC = W9; #J2_020_W9_L50N
+#
+##### Daughtercard 8
+## CLK
+#	#NET "SC_DC_CLK_P<3>" LOC = AA10 | IOSTANDARD = LVDS_25; #J1_062_AA10_L48P, 2.5V 
+#	#NET "SC_DC_CLK_N<3>" LOC = AB11 | IOSTANDARD = LVDS_25; #J1_061_AB11_L48N, 2.5V
+#	NET "DC_CLK_P<7>" LOC = AA10 | IOSTANDARD = LVDS_25; #J1_062_AA10_L48P
+#	NET "DC_CLK_N<7>" LOC = AB11 | IOSTANDARD = LVDS_25; #J1_061_AB11_L48N
+## TX
+#	#NET "AUX_P<3>" LOC = AA4;  #Pin 3/4 N and P were flipped 
+#	#NET "AUX_N<3>" LOC = AA3; #Pin 3/4 N and P were flipped 
+#	NET "TX_DC_P<7>" LOC = AA4;  
+#	NET "TX_DC_N<7>" LOC AA3;
+## RX
+#	#NET "DC_SC_DATA_P<3>" LOC = AA7; #J1_063_AA7_L64P, note the change from the schematic
+#	#NET "DC_SC_DATA_N<3>" LOC = AA6; #J1_065_AA6_L64N, note the change from the schematic 
+#	NET "RX_DC_P<7>" LOC = AA7; #J1_063_AA7_L64P
+#	NET "RX_DC_N<7>" LOC = AA6; #J1_065_AA6_L64N
+## SYNC
+#	#NET "DC_SC_TX_P<3>" LOC = W8; #J1_066_W8_L62P
+#	#NET "DC_SC_TX_N<3>" LOC = W7; #J1_067_W7_L62N
+#	NET "SYNC_P<7>" LOC = W8; #J1_066_W8_L62P
+#	NET "SYNCE_N<7>" LOC = W7; #J1_067_W7_L62N
+
+
+
+#####################ETHERNET IN/OUT SIGNALS##############################
+#
+##NET RJ45_ACK_P		LOC = "AD14" | IOSTANDARD = LVDS_25 | diff_term=true;
+##NET RJ45_ACK_N		LOC = "AF14" | IOSTANDARD = LVDS_25 | diff_term=true;
+#NET RJ45_TRG_P		LOC = "AB14"; #| IOSTANDARD = LVDS_25 | diff_term=true;
+#NET RJ45_TRG_N		LOC = "AC14"; #| IOSTANDARD = LVDS_25 | diff_term=true;
+#NET RJ45_CLK_P		LOC = "AE13";# | IOSTANDARD = LVDS_25 | diff_term=true;
+#NET RJ45_CLK_N		LOC = "AF13";# | IOSTANDARD = LVDS_25 | diff_term=true;
+##NET RJ45_RSV_P		LOC = "AE15"; #| IOSTANDARD = LVCMOS25;# | diff_term=true;
+##NET RJ45_RSV_N		LOC = "AF15"; #| IOSTANDARD = LVCMOS25;# | diff_term=true;
+#
+#
+#
+######################GIGABIT TRANSCEIVER IN/OUT SIGNALS##########################
+##
+#NET "MGTTXFAULT*" TIG;
+#NET "MGTMOD0*"    TIG;
+#NET "MGTLOS*"     TIG;
+#NET "MGTTXDIS*"   TIG;
+#NET "MGTMOD2*"    TIG;
+#NET "MGTMOD1*"    TIG;
+#
+#NET "MGTTXFAULT"    LOC = A5;#  | IOSTANDARD = LVCMOS33;
+#NET "MGTTXDIS"      LOC = E8;#  | IOSTANDARD = LVCMOS33;
+#NET "MGTMOD2"       LOC = A12;# | IOSTANDARD = LVCMOS33;
+#NET "MGTMOD1"       LOC = B12;# | IOSTANDARD = LVCMOS33;
+#NET "MGTMOD0"    	LOC = C5;#  | IOSTANDARD = LVCMOS33;
+#NET "MGTLOS"     	LOC = B5;#  | IOSTANDARD = LVCMOS33;
+#NET "MGTRXP" 			LOC = D7;
+#NET "MGTRXN" 			LOC = C7;
+#NET "MGTTXP" 			LOC = B6;
+#NET "MGTTXN" 			LOC = A6;
+##NET MGTCLK0P     LOC = B10  | IOSTANDARD = LVDS_25;
+##NET MGTCLK0N     LOC = A10  | IOSTANDARD = LVDS_25;
+#NET "MGTCLK1P"      LOC = D11 | IOSTANDARD = LVDS_25;
+#NET "MGTCLK1N"      LOC = C11 | IOSTANDARD = LVDS_25;
+##
+###ETHERNET TIMING STUFF:
+####CHANGE when full compile in place
+#NET "ETH_MODULE/trx_udp_clock" TNM_NET = "ETH_USR_CLK";
+#TIMESPEC TS_ETH_USR_CLK = PERIOD "ETH_USR_CLK" 8 ns high 50%;
+##
+##NET "*s_axi_aclk"  TNM_NET  = "clk_axi";
+#TIMESPEC "TS_gtxtocpu" = FROM "clk_gtx" TO "clk_axi" TIG;
+#TIMESPEC "TS_cputogtx" = FROM "clk_axi" TO "clk_gtx" TIG;
+##
+#INST "*user_side_FIFO/tx_fifo_i/rd_tran_frame_tog"  TNM = "tx_fifo_rd_to_wr";
+#INST "*user_side_FIFO/tx_fifo_i/rd_addr_txfer*"     TNM = "tx_fifo_rd_to_wr";
+#INST "*user_side_FIFO/tx_fifo_i/rd_txfer_tog"       TNM = "tx_fifo_rd_to_wr";
+###
+#INST "*user_side_FIFO/tx_fifo_i/wr_frame_in_fifo"   TNM = "tx_fifo_wr_to_rd";
+##
+#TIMESPEC "TS_tx_fifo_rd_to_wr"   = FROM "tx_fifo_rd_to_wr" TO "clk_gtx" 7800 ps DATAPATHONLY;
+#TIMESPEC "TS_tx_fifo_wr_to_rd"   = FROM "tx_fifo_wr_to_rd" TO clk_tx_mac 7800 ps DATAPATHONLY;
+##
+#### Reduce clock period to allow for metastability settling time
+###
+#### constrain the input to this register - this is a multicycle path due to the
+#### resync of the control
+#INST "*user_side_FIFO/tx_fifo_i/rd_addr_txfer*"  TNM = "tx_addr_rd";
+#INST "*user_side_FIFO/tx_fifo_i/wr_rd_addr*"     TNM = "tx_addr_wr";
+###
+#TIMESPEC "TS_tx_fifo_addr"       = FROM "tx_addr_rd" TO "tx_addr_wr" 10ns;
+###
+###
+##### RX Client FIFO
+#### Group the clock crossing signals into timing groups
+#INST "*user_side_FIFO/rx_fifo_i/wr_store_frame_tog"  TNM = "rx_fifo_wr_to_rd";
+#INST "*user_side_FIFO/rx_fifo_i/rd_addr*"            TNM = "rx_fifo_rd_to_wr";
+##
+#TIMESPEC "TS_rx_fifo_wr_to_rd"   = FROM "rx_fifo_wr_to_rd" TO "clk_gtx" 7800 ps DATAPATHONLY;
+#TIMESPEC "TS_rx_fifo_rd_to_wr"   = FROM "rx_fifo_rd_to_wr" TO "clk_rx" 7800 ps DATAPATHONLY;
+##
+#### generate a group of all flops NOT in the axi clock domain
+#TIMEGRP "ffs_except_axi"         = FFS EXCEPT "clock_generator_clkout1" "mdio_logic";
+#TIMESPEC "TS_config_to_all"      = FROM "clock_generator_clkout1" TO "ffs_except_axi" TIG;
+
+##################################################################################
+
+# Currently Unused
+
+##########################RAM for pedestals############################################
+
+#NET RAM_CE1n				LOC= J15; #| IOSTANDARD = LVCMOS33;		                           
+#NET RAM_CE2					LOC= H19; #| IOSTANDARD = LVCMOS33;		                             
+#NET RAM_OEn					LOC= H15; #| IOSTANDARD = LVCMOS33;			                                   
+#NET RAM_WEn					LOC= G19; #| IOSTANDARD = LVCMOS33;		   
+#                                    
+#                                    
+#NET RAM_IO<0>				LOC= G15; #| IOSTANDARD = LVCMOS33;
+#NET RAM_IO<1>				LOC= F15; #| IOSTANDARD = LVCMOS33;
+#NET RAM_IO<2>				LOC= K14; #| IOSTANDARD = LVCMOS33;
+#NET RAM_IO<3>				LOC= H14; #| IOSTANDARD = LVCMOS33;
+#NET RAM_IO<4>				LOC= F14; #| IOSTANDARD = LVCMOS33;
+#NET RAM_IO<5>				LOC= E14; #| IOSTANDARD = LVCMOS33;
+#NET RAM_IO<6>				LOC= B14; #| IOSTANDARD = LVCMOS33;
+#NET RAM_IO<7>				LOC= A14; #| IOSTANDARD = LVCMOS33;
+#                                    
+#NET RAM_A<0>				LOC= F16; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<1>				LOC= B23; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<2>				LOC= A23; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<3>				LOC= B22; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<4>				LOC= A22; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<5>				LOC= D21; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<6>				LOC= C21; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<7>				LOC= B21; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<8>				LOC= F18; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<9>				LOC= E18; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<10>				LOC= J17; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<11>				LOC= H17; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<12>				LOC= G17; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<13>				LOC= F17; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<14>				LOC= J16; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<15>				LOC= G16; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<16>				LOC= H13; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<17>				LOC= F20; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<18>				LOC= E20; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<19>				LOC= H18; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<20>				LOC= F19; #| IOSTANDARD = LVCMOS33;
+#NET RAM_A<21>				LOC= J13; #| IOSTANDARD = LVCMOS33;
+
+
+####################GENERAL IN/OUT SIGNALS#################################
+#NET "J1_079_Y6" 		LOC = Y6 | pullup;
+#NET "J1_078_AA3" 		LOC = AA3;
+#NET "J1_077_AA4" 		LOC = AA4;
+#NET "J1_075_AB3" 		LOC = AB3;
+#NET "J1_074_AB4" 		LOC = AB4;
+#NET "J1_073_AB5" 		LOC = AB5;
+#NET "J1_071_AC3" 		LOC = AC3;
+#NET "J1_070_AC4" 		LOC = AC4;2
+#NET "J1_069_AD3" 		LOC = AD3;
+#NET "J1_066_W8_P" 	LOC = W8; #FMC_conn:FMC1_HPC_LA21_P
+#NET "J1_067_W7_N" 	LOC = W7; #FMC_conn:FMC1_HPC_LA21_N
+#NET "J1_062_AB10_P" 	LOC = AB10; #FMC_conn:FMC1_HPC_LA19_P
+#NET "J1_061_AB11_N" 	LOC = AB11; #FMC_conn:FMC1_HPC_LA19_N
+#NET "J1_060_AE2_P" 	LOC = AE2; #FMC_conn:FMC1_HPC_LA15_P
+#NET "J1_059_AE1_N" 	LOC = AE1; #FMC_conn:FMC1_HPC_LA15_N
+
+
+
+# -- removed for now (14-SEP-2018)
+#NET "CDT_TRIG" 	   LOC = R2;  #J1_042_R2
+#
+##trigger for DC1
+#NET "E_TRIG<0>" 	   LOC = U2;  #scrod:J1_044_U2_P, FMC_conn:FMC1_HPC_LA02_P
+#NET "SCROD_TRIG<0>" 	LOC = U1;  #scrod:J1_043_U1_N, FMC_conn:FMC1_HPC_LA02_N
+#
+##trigger for DC3
+#NET "E_TRIG<2>" 	   LOC = W2;  #scrod:J1_048_W2_P, FMC_conn:FMC1_HPC_LA04_P
+#NET "SCROD_TRIG<2>" 	LOC = W1;  #scrod:J1_047_W1_N, FMC_conn:FMC1_HPC_LA04_N 
+#
+##trigger for DC2
+#NET "E_TRIG<1>" 	   LOC = AA2; #scrod:J1_052_AA2_P, FMC_conn:FMC1_HPC_LA07_P
+#NET "SCROD_TRIG<1>" 	LOC = AA1; #scrod:J1_051_AA1_N, FMC_conn:FMC1_HPC_LA07_N
+#
+##trigger for DC4
+#NET "E_TRIG<3>" 	   LOC = AC2; #scrod:J1_056_AC2_P, FMC_conn:FMC1_HPC_LA11_P
+#NET "SCROD_TRIG<3>" 	LOC = AC1; #scrod:J1_055_AC1_N, FMC_conn:FMC1_HPC_LA11_N
+
+
+##############  Needed HMB ?  ###########################################
+
+#NET "AUX_P<0>" LOC = V23; #J4_061_V23_GCLK+ 
+#NET "AUX_P<1>" LOC = F12; #AUX2_P, J3_069_F12_L31P
+#NET "AUX_P<2>" LOC = J9;   #Pin 2/3 N and P were flipped 
+#NET "AUX_P<3>" LOC = AA4;  #Pin 3/4 N and P were flipped 
+#
+#NET "AUX_N<0>" LOC = V24; #J4_062_V24_GCLK-
+#NET "AUX_N<1>" LOC = E12; #AUX2_N, J3_070_E12_L31N
+#NET "AUX_N<2>" LOC = K6;  #Pin 2/3 N and P were flipped #K6 shows up on the SCROD Rev A5, J7 shows up on BMD
+#NET "AUX_N<3>" LOC = AA3; #Pin 3/4 N and P were flipped 
+#
+#
+##Voltages obtained from IDL_15_002
+#NET "SC_DC_CLK_P<0>" LOC = U25  | IOSTANDARD = LVDS_25; #J4_083_U25_GCLK+, 2.5V
+#NET "SC_DC_CLK_P<1>" LOC = C13  | IOSTANDARD = LVDS_25; #J3_064_C13_GCLK+, 3.3V !?!? 
+#NET "SC_DC_CLK_P<2>" LOC = Y17  | IOSTANDARD = LVDS_25; #J2_017_Y17_L16P, 2.5V
+#NET "SC_DC_CLK_P<3>" LOC = AA10 | IOSTANDARD = LVDS_25; #J1_062_AA10_L48P, 2.5V 
+#
+#NET "SC_DC_CLK_N<0>" LOC = U26  | IOSTANDARD = LVDS_25; #J4_082_U26_GCLK-, 2.5V
+#NET "SC_DC_CLK_N<1>" LOC = A13  | IOSTANDARD = LVDS_25; #J3_065_A13_GCLK-, 3.3V !?!?
+#NET "SC_DC_CLK_N<2>" LOC = AA17 | IOSTANDARD = LVDS_25; #J2_019_AA17_L16N, 2.5V
+#NET "SC_DC_CLK_N<3>" LOC = AB11 | IOSTANDARD = LVDS_25; #J1_061_AB11_L48N, 2.5V
+#
+######################################
+##Banks 0 and 2 can each support any two of the following 2.5V differential standards: LVDS_25 outputs, MINI_LVDS_25 outputs, RSDS_25 outputs, PPDS_25 outputs, or any two of the following 3.3V differential standards: LVDS_33 outputs, MINI_LVDS_33
+#outputs, RSDS_33 outputs, PPDS_33 outputs, TMDS_33 outputs. Other I/O bank restrictions could also apply.
+##so sc-dc-clk<1> can be sent from a 3.3V to 2.5V
+######################################
+#
+#NET "DC_SC_TX_P<0>" LOC = AA9; #J2_102_AA9_L47P
+#NET "DC_SC_TX_P<1>" LOC = W20; #J2_045_W20_L4P
+#NET "DC_SC_TX_P<2>" LOC = W10; #J2_021_W10_L50P
+#NET "DC_SC_TX_P<3>" LOC = W8; #J1_066_W8_L62P
+#
+#NET "DC_SC_TX_N<0>" LOC = AB9; #J2_101_AB9_L47N
+#NET "DC_SC_TX_N<1>" LOC = Y20; #J2_044_Y20_L4N
+#NET "DC_SC_TX_N<2>" LOC = W9; #J2_020_W9_L50N
+#NET "DC_SC_TX_N<3>" LOC = W7; #J1_067_W7_L62N
+#
+#NET "DC_SC_DATA_P<0>" LOC = Y11; #J2_094_Y11_L41P
+#NET "DC_SC_DATA_P<1>" LOC = AA21; #J2_048_AA21_L15P
+#NET "DC_SC_DATA_P<2>" LOC = Y9; #DC_SC_DATA3_P, J2_024_Y9_L52P 
+#NET "DC_SC_DATA_P<3>" LOC = AA7; #J1_063_AA7_L64P, note the change from the schematic
+#
+#
+#NET "DC_SC_DATA_N<0>" LOC = AA11; #J2_093_AA11_L41N
+#NET "DC_SC_DATA_N<1>" LOC = AB21; #J2_047_AB21_L15N
+#NET "DC_SC_DATA_N<2>" LOC = AA8; #DC_SC_DATA3_N, J2_023_AA8_L52N
+#NET "DC_SC_DATA_N<3>" LOC = AA6; #J1_065_AA6_L64N, note the change from the schematic 
+#
+#
+
