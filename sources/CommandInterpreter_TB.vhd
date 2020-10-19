@@ -99,7 +99,10 @@ ARCHITECTURE behavior OF CommandInterpreterPing_TB IS
 	constant WORD_PACKET_SIZE_C : std_logic_vector(31 downto 0) := x"00000006"; -- 6 words
 	constant wordDC_01				: std_logic_vector(31 downto 0) := x"0000DC01"; --command target is one or more DC 
 	constant WORD_COMMAND_ID_C  : std_logic_vector(31 downto 0) := x"00000012";
-	constant PACKET_CHECKSUM	: std_logic_vector(31 downto 0) := x"4944F76C";    -- For SCROD ping x"4542EB6C" ; For scrod reg Write (Wr_reg = 00010002): x"4944F76C"
+	--Packet checksum for SCROD ping x"4542EB6C" ; For scrod reg Write (Wr_reg = 00010002): x"4944F76C"
+	-- For SCROD Reg Read (Rd_reg = 00000002) : x"493AD16A"
+	-- For DC01 ping : x"4543226D"
+	constant PACKET_CHECKSUM	: std_logic_vector(31 downto 0) := x"4542EB6C";    
 	constant wordScrodRevC	: std_logic_vector(31 downto 0) := x"0000A500";
    --Inputs
    signal usrClk : std_logic := '0';
@@ -133,7 +136,7 @@ ARCHITECTURE behavior OF CommandInterpreterPing_TB IS
    signal cmd_int_state : std_logic_vector(4 downto 0);
 
 
-signal CtrlRegister : GPR := (others => (others => '0'));
+	signal CtrlRegister : GPR := (others => (others => '0'));
    -- Clock period definitions
    constant usrClk_period : time := 8 ns;
    constant dataClk_period : time := 40 ns;
@@ -194,9 +197,11 @@ BEGIN
 	variable checksum : std_logic_vector(31 downto 0) := (others => '0');
    begin		
       -- hold reset state for 100 ns.
-      wait for 100 ns;	
+      wait for 100 ns;
+	
 
       wait for usrClk_period*10;
+	
 		rxDataValid <= '1';
 		rxDataLast <= '0';
 		rxData <= WORD_HEADER_C;  
@@ -212,23 +217,28 @@ BEGIN
 		rxData <= WORD_COMMAND_C;
 		wait for usrClk_period;
 
-		rxData <= wordScrodRevC;
+		rxData <= wordScrodRevC;     --wordDC_01;          --wordScrodRevC;
 		
 		wait for usrClk_period;
 		
 		rxData <= WORD_COMMAND_ID_C;
 		wait for usrClk_period;
-		
-		rxData <= WORD_WRITE_C;  --WORD_PING_C;  -- for ping/write
---- only for write command--	
-	wait for usrClk_period;
-		rxData <= x"00010002";
+		--WORD_PING_C | WORD_WRITE_C | WORD_READ_C depending upon type of command
+		rxData <= WORD_PING_C;  
+--- only for Reg Wr/Rd command--	
+-- first 4 MSBs are Reg Value, last 4 [LSBs] are Reg Addr
+-- For Reg Read command, Reg Value [4 MSBs] = 0000 by default, give address in last 4.
+--	wait for usrClk_period;
+--		rxData <= x"00010002";         
 -----------------------------		
 		wait for usrClk_period;
-		
-		rxData <= x"726A7479";        -- for ping x"70696e79" -- for write (Reg 2 valuue 1: 00010002)=>x"726A7479"
+	-- Command Checksum: for ping x"70696e79" -- for write (Reg 2 value 1: 00010002)=>x"726A7479"	
+	-- for Read (Reg 2: 00000002) => x"72656178"
+		rxData <= x"70696e79";        
 		txDataReady <= '1';
+		
 		wait for usrClk_period;
+
 		rxData <= PACKET_CHECKSUM;
       wait;
    end process;

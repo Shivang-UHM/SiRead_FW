@@ -167,16 +167,22 @@ architecture rtl of CommandInterpreter is
 
 	signal stateNum : slv(4 downto 0);
 	signal dc_id : integer;
+	-- added signal to monitor wordsleft 15 oct 2020: Shivang
+--	signal wordsleft_i  : std_logic_vector(31 downto 0) := (others=> '0');
+	
     -- attribute keep : string;
     -- attribute keep of stateNum : signal is "true";
 
 	attribute mark_debug : string;
     attribute mark_debug of loadQB : signal is "true";
 	attribute mark_debug of stateNum : signal is "true";
+--	attribute mark_debug of wordsleft_i : signal is "true";
 
 begin
 	cmd_int_state <= stateNum;
 	ldQBLink <= loadQB;
+--	wordsleft_i <= r.wordsLeft;
+	
     stateNum <= "00000" when r.state = IDLE_S else             -- 0 x00
                 "00001" when r.state = PACKET_SIZE_S else      -- 1 x01
                 "00010" when r.state = PACKET_TYPE_S else      -- 2 x02
@@ -344,7 +350,7 @@ begin
                     v.checksum  := r.checksum + rxData;
                     v.regAddr   := rxData(15 downto 0);
                     v.regWrData := rxData(31 downto 16);
-                    v.wordsLeft := r.wordsLeft - 1;
+                   -- v.wordsLeft := r.wordsLeft - 1;      -- commented on 10/18/20 Shivang (to stop wordsleft decrement in the event of Rd/Wr.
                     -- Possible errors:
                     -- This is last, go back to IDLE
                     if rxDataLast = '1' then
@@ -597,7 +603,7 @@ begin
                     when 0 => v.txData := WORD_HEADER_C;
                     when 1 => v.txData := x"00000005";
                     when 2 => v.txData := WORD_ERR_C;
-                    when 3 => v.txData := wordScrodRevC;
+                    when 3 => v.txData := wordScrodRevC;            -- Why not make it to r.deviceID ??
                     when 4 => v.txData := x"00" & r.commandId;
                     when 5 => v.txData := r.errFlags;
                     when 6 => v.txData     := r.checksum;
@@ -607,7 +613,7 @@ begin
                 end case;
             when CHECK_MORE_S =>
 				loadQB <= '0';
-                if r.wordsLeft /= 1 and r.wordsLeft /= 0 then
+                if r.wordsLeft /= 1 then      --and r.wordsLeft /= 0 then   --Added and condition on 15th Oct(Shivang)
                     v.state := COMMAND_ID_S;
                 else
                     v.state := PACKET_CHECKSUM_S;
