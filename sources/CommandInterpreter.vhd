@@ -350,7 +350,7 @@ begin
                     v.checksum  := r.checksum + rxData;
                     v.regAddr   := rxData(15 downto 0);
                     v.regWrData := rxData(31 downto 16);
-                   -- v.wordsLeft := r.wordsLeft - 1;      -- commented on 10/18/20 Shivang (to stop wordsleft decrement in the event of Rd/Wr.
+                 --   v.wordsLeft := r.wordsLeft - 1;      -- commented on 10/18/20 Shivang (to stop wordsleft decrement in the event of Rd/Wr.
                     -- Possible errors:
                     -- This is last, go back to IDLE
                     if rxDataLast = '1' then
@@ -613,7 +613,7 @@ begin
                 end case;
             when CHECK_MORE_S =>
 				loadQB <= '0';
-                if r.wordsLeft /= 1 then      --and r.wordsLeft /= 0 then   --Added and condition on 15th Oct(Shivang)
+                if r.wordsLeft /= 1 then --and r.wordsLeft /= 0 then   --Added and condition on 15th Oct(Shivang)
                     v.state := COMMAND_ID_S;
                 else
                     v.state := PACKET_CHECKSUM_S;
