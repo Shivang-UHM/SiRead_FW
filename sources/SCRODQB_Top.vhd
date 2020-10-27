@@ -223,27 +223,27 @@ CLOCK_FANOUT : entity work.clk_Div
 	 
 global_event <= (others => evntFlag);
 
---DC_reset_process : process(internal_data_clk) --unused for now 10/01
+DC_reset_process : process(internal_data_clk) --unused for now 10/01
 ----variable counter : integer range 0 to 2 := 0;
---begin 
---	IF rising_edge(internal_data_clk) THEN
---		sync <= CtrlRegister(2)(8);
---	   QBrst <= CtrlRegister(2)(NUM_DCs downto 0);
---	END IF;
---end process;
+begin 
+	IF rising_edge(internal_data_clk) THEN
+		sync <= CtrlRegister(2)(8);
+	   QBrst <= CtrlRegister(2)(NUM_DCs downto 0);
+	END IF;
+end process;
 
 ----------------------------
 ------One-shot ckt----------
 ----------------------------
-One_Shot : entity work.OneShot_ckt
-port map (
-	clk => internal_data_clk,
---	rst => reset,
-	trigger => soft_trigger,
---	done => done,
-	pulse => QBrst(0)
-	
-);
+--One_Shot : entity work.OneShot_ckt
+--port map (
+--	clk => internal_data_clk,
+----	rst => reset,
+--	trigger => soft_trigger,
+----	done => done,
+--	pulse => QBrst(0)
+--	
+--);
 
 
 
