@@ -101,8 +101,8 @@ ARCHITECTURE behavior OF CommandInterpreterPing_TB IS
 	constant WORD_COMMAND_ID_C  : std_logic_vector(31 downto 0) := x"00000012";
 	--Packet checksum for SCROD ping x"4542EB6C" ; For scrod reg Write (Wr_reg = 00010002): x"4944F76C"
 	-- For SCROD Reg Read (Rd_reg = 00000002) : x"493AD16A"
-	-- For DC01 ping : x"4543226D"
-	constant PACKET_CHECKSUM	: std_logic_vector(31 downto 0) := x"4542EB6C";    
+	-- For DC01 ping : x"4543226D"   --For DC01 Reg 2 write value 1 (Wr_reg = 00010002): x"49452e6D"
+	constant PACKET_CHECKSUM	: std_logic_vector(31 downto 0) := x"4543226D";    
 	constant wordScrodRevC	: std_logic_vector(31 downto 0) := x"0000A500";
    --Inputs
    signal usrClk : std_logic := '0';
@@ -199,7 +199,9 @@ BEGIN
       -- hold reset state for 100 ns.
       wait for 100 ns;
 	
-
+--serialClkLck(0) <= '1';
+--trigLinkSync(0) <= '1';
+-- DC_RESP(15 downto 0) <= x"0002";
       wait for usrClk_period*10;
 	
 		rxDataValid <= '1';
@@ -217,7 +219,7 @@ BEGIN
 		rxData <= WORD_COMMAND_C;
 		wait for usrClk_period;
 
-		rxData <= wordScrodRevC;     --wordDC_01;          --wordScrodRevC;
+		rxData <= wordDC_01;     --wordDC_01;          --wordScrodRevC;
 		
 		wait for usrClk_period;
 		
