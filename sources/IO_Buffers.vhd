@@ -56,7 +56,7 @@ begin
 Gen_buffers : for I in num_DC downto 0 generate
 	RX_IBUF_inst : IBUFDS -- input buffer: serial data from DCs
 	generic map (
-	     DIFF_TERM    => FALSE, -- Differential Termination is already on board
+	     DIFF_TERM    => TRUE, -- Differential Termination is not available on board
 	     IOSTANDARD => "LVDS_25" 
 	     )
 	port map (

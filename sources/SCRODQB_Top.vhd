@@ -67,7 +67,7 @@ entity SCRODQB_Top is
 			TX_DC_P			 : OUT slv(NUM_DCs downto 0);--Serial output to DC 
 			SYNC_P			 : OUT slv(NUM_DCs downto 0); -- when '0' DC listens only, '1' DC reads back command
 			SYNC_N			 : OUT slv(NUM_DCs downto 0);
---			DC_RESET        : OUT slv(1 DOWNTO 0);		-- Commented by Shivang on Oct 8, 2020
+			DC_RESET        : OUT slv(1 DOWNTO 0);		-- Commented by Shivang on Oct 8, 2020
 			--Trigger to PMT SCRODs (mRICH)
 			GLOBAL_EVENT_P    : OUT slv(3 downto 0);
 			GLOBAL_EVENT_N    : OUT slv(3 downto 0)
@@ -147,6 +147,7 @@ signal dcm_status : slv(7 downto 0);
 signal dcm_rst : sl := '0';
 signal internal_fpga_clk : sl; --fast clk 
 signal internal_data_clk : sl; -- QBLink timing clock
+signal clk_qbl : sl;
 
 --signal been_reset : sl := '0';  -- Commented by Shivang on Oct 8, 2020
 --HW testing signals--
@@ -168,7 +169,7 @@ signal soft_trigger : std_logic :='1';
 --attribute mark_debug of been_reset : signal is "true"; -- Commented by Shivang on Oct 8, 2020
 
 begin
-
+DC_RESET <= (others => '0');
 --QBRst_process : process(internal_data_clk, been_reset)
 --variable counter : integer range 0 to 26 := 0;
 --begin

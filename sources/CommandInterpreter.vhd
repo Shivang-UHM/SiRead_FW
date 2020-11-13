@@ -303,6 +303,7 @@ begin
                     end if;
                 end if;
             when COMMAND_ID_S =>
+				v.errFlags := (others => '0');
                 v.wordOutCnt  := (others => '0');
                 v.timeoutCnt  := (others => '0');
                 if rxDataValid = '1' then
@@ -363,6 +364,7 @@ begin
                     end if;
                 end if;
             when COMMAND_CHECKSUM_S =>
+                v.errFlags := (others => '0');
                 if rxDataValid = '1' then
                     rxDataReady <= '1';
                     v.wordsLeft := r.wordsLeft - 1;
