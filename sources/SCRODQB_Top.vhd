@@ -67,6 +67,7 @@ entity SCRODQB_Top is
 			TX_DC_P			 : OUT slv(NUM_DCs downto 0);--Serial output to DC 
 			SYNC_P			 : OUT slv(NUM_DCs downto 0); -- when '0' DC listens only, '1' DC reads back command
 			SYNC_N			 : OUT slv(NUM_DCs downto 0);
+<<<<<<< HEAD
 			DC_RESET        : OUT slv(NUM_DCs DOWNTO 0);		-- Commented by Shivang on Oct 8, 2020
 			--Trigger to PMT SCRODs (mRICH)
 			GLOBAL_EVENT_P    : OUT slv(3 downto 0);
@@ -76,6 +77,17 @@ end SCRODQB_Top;
 
 architecture Behavioral of SCRODQB_Top is
 --PC communcation signals---
+=======
+			DC_RESET        : OUT slv(1 DOWNTO 0);		-- Commented by Shivang on Oct 8, 2020
+			--Trigger to PMT SCRODs (mRICH)
+			GLOBAL_EVENT_P    : OUT slv(3 downto 0);
+			GLOBAL_EVENT_N    : OUT slv(3 downto 0)
+	);
+end SCRODQB_Top;
+
+architecture Behavioral of SCRODQB_Top is
+--PC communcation signals---
+>>>>>>> 5c1989e71d958b8395460b9217916527b6055908
 signal ethSync      : sl;
 	signal ethReady     : sl;
 	signal led          : slv(15 downto 0);
@@ -147,6 +159,7 @@ signal dcm_status : slv(7 downto 0);
 signal dcm_rst : sl := '0';
 signal internal_fpga_clk : sl; --fast clk 
 signal internal_data_clk : sl; -- QBLink timing clock
+signal clk_qbl : sl;
 
 --signal been_reset : sl := '0';  -- Commented by Shivang on Oct 8, 2020
 --HW testing signals--
@@ -159,16 +172,16 @@ signal soft_trigger : std_logic :='1';
 
 --attribute keep_hierarchy: boolean;
 --attribute keep_hierarchy of Behavioral: architecture is TRUE;
-attribute mark_debug : string;
-attribute mark_debug of CommandIntState : signal is "true";
-attribute mark_debug of cmd_target_type : signal is "true";
-attribute mark_debug of trigLinkSynced : signal is "true";
-attribute mark_debug of serialClkLocked : signal is "true";
-attribute mark_debug of QBRst : signal is "true";
+--attribute mark_debug : string;
+--attribute mark_debug of CommandIntState : signal is "true";
+--attribute mark_debug of cmd_target_type : signal is "true";
+--attribute mark_debug of trigLinkSynced : signal is "true";
+--attribute mark_debug of serialClkLocked : signal is "true";
+--attribute mark_debug of QBRst : signal is "true";
 --attribute mark_debug of been_reset : signal is "true"; -- Commented by Shivang on Oct 8, 2020
 
 begin
-
+DC_RESET <= (others => '0');
 --QBRst_process : process(internal_data_clk, been_reset)
 --variable counter : integer range 0 to 26 := 0;
 --begin
@@ -224,6 +237,7 @@ CLOCK_FANOUT : entity work.clk_Div
 global_event <= (others => evntFlag);
 
 DC_reset_process : process(internal_data_clk) --unused for now 10/01
+<<<<<<< HEAD
 ----variable counter : integer range 0 to 2 := 0;
 begin 
 	IF rising_edge(internal_data_clk) THEN

@@ -20,7 +20,7 @@ library ieee;
     use work.GigabitEthPkg.all;
     use work.BMD_definitions.all; --need to include BMD_definitions in addition to work.all
 
-entity CommandInterpreter is
+entity CommandInterpreter_really_this_one is
     generic (
         REG_ADDR_BITS_G : integer := 16;
         REG_DATA_BITS_G : integer := 16;
@@ -30,8 +30,8 @@ entity CommandInterpreter is
     );
     port (
         -- User clock and reset
-        usrClk      : in  sl;
-		dataClk	   : in  sl;
+        clk      : in  std_logic;
+		dataNotC_l_k	   : in  sl;
         usrRst      : in  sl;
         -- Incoming data from PC
         rxData      : in  slv(31 downto 0);
@@ -63,10 +63,10 @@ entity CommandInterpreter is
 		ldQBLink 	: out sl;
 		cmd_int_state : out slv(4 downto 0)
     );
-end CommandInterpreter;
+end entity;
 
 -- Define architecture
-architecture rtl of CommandInterpreter is
+architecture rtl of CommandInterpreter_really_this_one is
 
     type StateType     is (IDLE_S,PACKET_SIZE_S,PACKET_TYPE_S,
                            COMMAND_TARGET_S,COMMAND_ID_S,COMMAND_TYPE_S,
@@ -168,21 +168,21 @@ architecture rtl of CommandInterpreter is
 	signal stateNum : slv(4 downto 0);
 	signal dc_id : integer;
 	-- added signal to monitor wordsleft 15 oct 2020: Shivang
-    --	signal wordsleft_i  : std_logic_vector(31 downto 0) := (others=> '0');
-
+--	signal wordsleft_i  : std_logic_vector(31 downto 0) := (others=> '0');
+	
     -- attribute keep : string;
     -- attribute keep of stateNum : signal is "true";
 
 	attribute mark_debug : string;
     attribute mark_debug of loadQB : signal is "true";
 	attribute mark_debug of stateNum : signal is "true";
-    --	attribute mark_debug of wordsleft_i : signal is "true";
+--	attribute mark_debug of wordsleft_i : signal is "true";
 
 begin
 	cmd_int_state <= stateNum;
 	ldQBLink <= loadQB;
-    --	wordsleft_i <= r.wordsLeft;
-
+--	wordsleft_i <= r.wordsLeft;
+	
     stateNum <= "00000" when r.state = IDLE_S else             -- 0 x00
                 "00001" when r.state = PACKET_SIZE_S else      -- 1 x01
                 "00010" when r.state = PACKET_TYPE_S else      -- 2 x02
@@ -218,7 +218,6 @@ begin
         v.txDataValid := '0';
         v.txDataLast  := '0';
         rxDataReady   <= '0';
-       
 
         -- State machine
         case(r.state) is
@@ -303,7 +302,6 @@ begin
                     end if;
                 end if;
             when COMMAND_ID_S =>
-				v.errFlags := (others => '0');
                 v.wordOutCnt  := (others => '0');
                 v.timeoutCnt  := (others => '0');
                 if rxDataValid = '1' then
@@ -352,7 +350,7 @@ begin
                     v.checksum  := r.checksum + rxData;
                     v.regAddr   := rxData(15 downto 0);
                     v.regWrData := rxData(31 downto 16);
-                    --   v.wordsLeft := r.wordsLeft - 1;      -- commented on 10/18/20 Shivang (to stop wordsleft decrement in the event of Rd/Wr.
+                   -- v.wordsLeft := r.wordsLeft - 1;      -- commented on 10/18/20 Shivang (to stop wordsleft decrement in the event of Rd/Wr.
                     -- Possible errors:
                     -- This is last, go back to IDLE
                     if rxDataLast = '1' then
@@ -364,7 +362,6 @@ begin
                     end if;
                 end if;
             when COMMAND_CHECKSUM_S =>
-                v.errFlags := (others => '0');
                 if rxDataValid = '1' then
                     rxDataReady <= '1';
                     v.wordsLeft := r.wordsLeft - 1;
@@ -404,18 +401,12 @@ begin
 								v.state := ERR_RESPONSE_S;
 							end if;
 						else
-                            if dc_id > num_DC+1 then 
-                                v.errFlags := r.errFlags + QBLINK_FAILURE_C;
-                                v.state := ERR_RESPONSE_S;
-                            else
-
-                                if serialClkLck(dc_id-1) = '1' and trigLinkSync(dc_id-1) = '1' then --check if QBLink is up (hardcoded)
-                                    v.checksum := (others => '0');
-                                    v.state    := PING_RESPONSE_S;
-                                else
-                                    v.errFlags := r.errFlags + QBLINK_FAILURE_C;
-                                    v.state := ERR_RESPONSE_S;
-                                end if;
+							if serialClkLck(num_dc - 1) = '1' and trigLinkSync(num_dc -1) = '1' then --check if QBLink is up (hardcoded)
+								v.checksum := (others => '0');
+								v.state    := PING_RESPONSE_S;
+							else
+								v.errFlags := r.errFlags + QBLINK_FAILURE_C;
+								v.state := ERR_RESPONSE_S;
                             end if;
                         end if;
                     else
@@ -612,7 +603,7 @@ begin
                     when 0 => v.txData := WORD_HEADER_C;
                     when 1 => v.txData := x"00000005";
                     when 2 => v.txData := WORD_ERR_C;
-                    when 3 => v.txData := r.deviceID; --wordScrodRevC;            -- Why not make it to r.deviceID ??
+                    when 3 => v.txData := wordScrodRevC;            -- Why not make it to r.deviceID ??
                     when 4 => v.txData := x"00" & r.commandId;
                     when 5 => v.txData := r.errFlags;
                     when 6 => v.txData     := r.checksum;
@@ -622,7 +613,7 @@ begin
                 end case;
             when CHECK_MORE_S =>
 				loadQB <= '0';
-                if r.wordsLeft /= 1 then --and r.wordsLeft /= 0 then   --Added and condition on 15th Oct(Shivang)
+                if r.wordsLeft /= 1 then      --and r.wordsLeft /= 0 then   --Added and condition on 15th Oct(Shivang)
                     v.state := COMMAND_ID_S;
                 else
                     v.state := PACKET_CHECKSUM_S;
@@ -662,14 +653,14 @@ begin
 
     end process;
 
-    seq : process (usrClk) is
+    seq : process (clk) is
     begin
-        if (rising_edge(usrClk)) then
+        if (rising_edge(clk)) then
             r <= rin after GATE_DELAY_G;
 			t <= tin after GATE_DELAY_G;
 			if EVNT_FLAG = '0' then
 				if r.state = COMMAND_DATA_S and loadQB = '1' then
-					QB_loadReg(0) <= r.commandType;                                     
+					QB_loadReg(0) <= r.commandType;
 					start_load <= '1';
 				elsif r.state = COMMAND_CHECKSUM_S and loadQB = '1' then
 					QB_loadReg(0) <= r.command;
@@ -743,9 +734,9 @@ begin
         tin <= g;
     end process;
 
-	QBload_reg : process (dataClk, start_load) is
+	QBload_reg : process (dataNotC_l_k, start_load) is
 	begin
-        if(rising_edge(dataClk)) then
+        if(rising_edge(dataNotC_l_k)) then
             if start_load = '1' then
                 if dc_id = 10 then
                     QB_WrEn <= (others =>'1');
