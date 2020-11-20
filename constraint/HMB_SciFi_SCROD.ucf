@@ -145,8 +145,8 @@ NET "RX_DC_N<3>" LOC = W7 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE";
 NET "SYNC_P<3>" LOC = AD6 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; 
 NET "SYNC_N<3>" LOC = AF6 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; 
 ########DC RESET for mRICH##########
-#NET "DC_RESET<0>" LOC = AC1;
-#NET "DC_RESET<1>" LOC = V3;
+NET "DC_RESET<0>" LOC = AC1;
+NET "DC_RESET<1>" LOC = V3;
 ########## dac interface signals #####################################################
 #NET "DAC_SDI" 			LOC = "P46";
 #NET "DAC_SCLK" 		LOC = "P47";
