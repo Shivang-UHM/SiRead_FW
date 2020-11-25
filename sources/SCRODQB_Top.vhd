@@ -67,7 +67,7 @@ entity SCRODQB_Top is
 			TX_DC_P			 : OUT slv(NUM_DCs downto 0);--Serial output to DC 
 			SYNC_P			 : OUT slv(NUM_DCs downto 0); -- when '0' DC listens only, '1' DC reads back command
 			SYNC_N			 : OUT slv(NUM_DCs downto 0);
-<<<<<<< HEAD
+
 			DC_RESET        : OUT slv(NUM_DCs DOWNTO 0);		-- Commented by Shivang on Oct 8, 2020
 			--Trigger to PMT SCRODs (mRICH)
 			GLOBAL_EVENT_P    : OUT slv(3 downto 0);
@@ -77,18 +77,7 @@ end SCRODQB_Top;
 
 architecture Behavioral of SCRODQB_Top is
 --PC communcation signals---
-=======
-			DC_RESET        : OUT slv(1 DOWNTO 0);		-- Commented by Shivang on Oct 8, 2020
-			--Trigger to PMT SCRODs (mRICH)
-			GLOBAL_EVENT_P    : OUT slv(3 downto 0);
-			GLOBAL_EVENT_N    : OUT slv(3 downto 0)
-	);
-end SCRODQB_Top;
-
-architecture Behavioral of SCRODQB_Top is
---PC communcation signals---
->>>>>>> 5c1989e71d958b8395460b9217916527b6055908
-signal ethSync      : sl;
+	signal ethSync      : sl;
 	signal ethReady     : sl;
 	signal led          : slv(15 downto 0);
 
@@ -164,7 +153,7 @@ signal clk_qbl : sl;
 --signal been_reset : sl := '0';  -- Commented by Shivang on Oct 8, 2020
 --HW testing signals--
 constant correctData : slv(31 downto 0) := x"DEADBEEF"; --USER: set to register value you want to write to DC 
-signal sync : sl := '0'; -- synchronize timestamp counters on all DCs
+signal sync : slv(NUM_DCs downto 0) := (others =>'0'); -- synchronize timestamp counters on all DCs
 signal cmd_target_type : sl := '0';
 --for one-shot
 signal soft_trigger : std_logic :='1';
@@ -181,7 +170,7 @@ signal soft_trigger : std_logic :='1';
 --attribute mark_debug of been_reset : signal is "true"; -- Commented by Shivang on Oct 8, 2020
 
 begin
-DC_RESET <= (others => '0');
+--DC_RESET <= (others => '0');
 --QBRst_process : process(internal_data_clk, been_reset)
 --variable counter : integer range 0 to 26 := 0;
 --begin
@@ -237,12 +226,11 @@ CLOCK_FANOUT : entity work.clk_Div
 global_event <= (others => evntFlag);
 
 DC_reset_process : process(internal_data_clk) --unused for now 10/01
-<<<<<<< HEAD
 ----variable counter : integer range 0 to 2 := 0;
 begin 
 	IF rising_edge(internal_data_clk) THEN
-	   sync <= CtrlRegister(2)(8);
-	   QBrst <= CtrlRegister(2)(NUM_DCs downto 0);
+	   sync <= CtrlRegister(2)(NUM_DCs downto 0);
+--	   QBrst <= CtrlRegister(2)(NUM_DCs downto 0);
 	   DC_RESET <= CtrlRegister(2)(NUM_DCs downto 0);
 	END IF;
 end process;
@@ -257,7 +245,6 @@ end process;
 --	trigger => soft_trigger,
 ----	done => done,
 --	pulse => QBrst(0)
---	
 --);
 
 
@@ -413,7 +400,8 @@ port map (
 	QB_RST => QBrst,
 	SERIAL_CLK_LCK => serialClkLocked,
 	TRIG_LINK_SYNC => trigLinkSynced,
-	EVENT_TRIG => evntFlag
+	EVENT_TRIG => evntFlag,
+	sync => sync
 	);
 
 END Behavioral;  

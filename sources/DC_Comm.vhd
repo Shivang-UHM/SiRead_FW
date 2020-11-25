@@ -32,7 +32,7 @@ use ieee.std_logic_unsigned.all;
 -- any Xilinx primitives in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
-
+--Hello
 entity DC_Comm is
 	Generic ( num_DC : integer := 3); --highest index in DC signal vectors: (# of DCs) - 1  
     Port ( DATA_CLK : in  sl;
@@ -51,11 +51,13 @@ entity DC_Comm is
 			  TrigLogicRst : in sl;
 			  SERIAL_CLK_LCK : out slv(num_DC downto 0);
 			  TRIG_LINK_SYNC : out slv(num_DC downto 0);
-			  Event_Trig : out sl --global event trigger 
+			  Event_Trig : out sl; --global event trigger 
+			  sync : in slv(num_DC downto 0)
 			  );
 end DC_Comm;
 
 architecture Behaviorial of DC_Comm is
+
 signal tx_dc : slv(num_DC downto 0):= (others => '0');
 signal rx_dc : slv(num_DC downto 0);
 signal dc_dataValid : slv(num_DC downto 0):= (others => '0');
@@ -66,6 +68,8 @@ signal serialClkLck : slv(num_DC downto 0):= (others => '0');
 signal TrigFlag : slv(num_DC downto 0) := (others => '0');
 signal DC_sel : slv(num_DC downto 0) := (others => '0');
 signal evnt_trig : sl := '0';
+signal i_sync : slv(num_DC downto 0) := (others => '0');
+
 begin
 TX <= tx_dc;
 rx_dc <= RX;
@@ -74,6 +78,10 @@ rd_req <= RESP_REQ;
 TRIG_LINK_SYNC <= trgLinkSync;
 SERIAL_CLK_LCK <= serialClkLck;
 Event_trig <= evnt_trig;
+i_sync <= sync;
+
+
+
 DC_respMUX : Process(DC_sel,evnt_trig,dc_data, DATA_CLK)
 	variable count : integer := 0;
 begin
@@ -131,7 +139,8 @@ PORT MAP(
 			 localWordOutValid => dc_dataValid(I),
 			 localWordOutReq => rd_req(I),
 			 trgLinkSynced => trgLinkSync(I),
-			 serialClkLocked => serialClkLck(I)
+			 serialClkLocked => serialClkLck(I),
+			 sync => i_sync(I)
 			 );
 end GENERATE Gen_QBLink;
 

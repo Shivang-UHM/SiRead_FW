@@ -38,7 +38,7 @@ entity IO_Buffers is
            TX : in  STD_LOGIC_VECTOR (num_DC downto 0);
            DATA_CLK : in STD_LOGIC;
 			  GLOB_EVNT : STD_LOGIC_VECTOR(3 downto 0);
-           SYNC : in  STD_LOGIC; --Universal sync signal
+           SYNC : in  STD_LOGIC_VECTOR (num_DC downto 0); --Universal sync signal
            TX_P : out  STD_LOGIC_VECTOR (num_DC downto 0);
            TX_N : out  STD_LOGIC_VECTOR (num_DC downto 0);
 			  DC_CLK_P : out  STD_LOGIC_VECTOR (num_DC downto 0);
@@ -77,7 +77,7 @@ Gen_buffers : for I in num_DC downto 0 generate
 	port map (
 		O => SYNC_P(I),
 		OB => SYNC_N(I),
-		I => SYNC);
+		I => SYNC(I));
 	
 DC_CLK_ODDR2 : ODDR2  --use ODDR2 with internal data clk to generate dc_clk
    generic map(
