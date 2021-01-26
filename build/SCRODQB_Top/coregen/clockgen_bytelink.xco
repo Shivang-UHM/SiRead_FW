@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 14.7
-# Date: Fri Nov 13 17:35:34 2020
+# Date: Fri Jan 22 13:51:49 2021
 #
 ##############################################################
 #
@@ -64,13 +64,13 @@ CSET clkfb_out_n_port=CLKFB_OUT_N
 CSET clkfb_out_p_port=CLKFB_OUT_P
 CSET clkfb_out_port=CLKFB_OUT
 CSET clkfb_stopped_port=CLKFB_STOPPED
-CSET clkin1_jitter_ps=400.0
+CSET clkin1_jitter_ps=800.0
 CSET clkin1_ui_jitter=0.010
 CSET clkin2_jitter_ps=100.0
 CSET clkin2_ui_jitter=0.010
 CSET clkout1_drives=BUFG
 CSET clkout1_requested_duty_cycle=50.000
-CSET clkout1_requested_out_freq=125
+CSET clkout1_requested_out_freq=62.5
 CSET clkout1_requested_phase=0.000
 CSET clkout2_drives=BUFG
 CSET clkout2_requested_duty_cycle=50.000
@@ -128,7 +128,7 @@ CSET dcm_clkgen_notes=None
 CSET dcm_clkgen_spread_spectrum=NONE
 CSET dcm_clkgen_startup_wait=false
 CSET dcm_clkin_divide_by_2=false
-CSET dcm_clkin_period=40.000
+CSET dcm_clkin_period=80.000
 CSET dcm_clkout_phase_shift=NONE
 CSET dcm_deskew_adjust=SYSTEM_SYNCHRONOUS
 CSET dcm_notes=None
@@ -223,7 +223,7 @@ CSET pll_divclk_divide=1
 CSET pll_notes=None
 CSET pll_ref_jitter=0.010
 CSET power_down_port=POWER_DOWN
-CSET prim_in_freq=25
+CSET prim_in_freq=12.5
 CSET prim_in_jitter=0.010
 CSET prim_source=No_buffer
 CSET primary_port=SST_CLK_IN
@@ -266,4 +266,4 @@ CSET use_status=false
 MISC pkg_timestamp=2012-05-10T12:44:55Z
 # END Extra information
 GENERATE
-# CRC: 554ce4cb
+# CRC: 6f204081
