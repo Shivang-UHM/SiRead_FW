@@ -148,7 +148,8 @@ signal dcm_status : slv(7 downto 0);
 signal dcm_rst : sl := '0';
 signal internal_fpga_clk : sl; --fast clk 
 signal internal_data_clk : sl; -- QBLink timing clock
-signal clk_qbl : sl;
+signal Clk_to_DC : sl;
+--signal qbl_fast_clk : sl;
 
 --signal been_reset : sl := '0';  -- Commented by Shivang on Oct 8, 2020
 --HW testing signals--
@@ -219,6 +220,7 @@ CLOCK_FANOUT : entity work.clk_Div
     -- Clock out ports
     CLK_OUT1 => internal_fpga_clk,
     CLK_OUT2 => internal_data_clk,
+	 CLK_OUT3 => Clk_to_DC,
     -- Status and control signals
     RESET  => dcm_rst,
     LOCKED => dcm_locked);
@@ -266,7 +268,7 @@ PORT MAP(
 	TX_N => TX_DC_N,
 	DC_CLK_P => DC_CLK_P,
 	DC_CLK_N => DC_CLK_N,
- 	DATA_CLK => internal_data_clk,
+ 	DATA_CLK => Clk_to_DC, -- internal_data_clk,  --jan 20:25 MHz clk to DC
 	GLOB_EVNT_P => GLOBAL_EVENT_P,
 	GLOB_EVNT_N => GLOBAL_EVENT_N,
 	RX => rx_dc,
