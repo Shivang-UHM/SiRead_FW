@@ -168,21 +168,21 @@ architecture rtl of CommandInterpreter is
 	signal stateNum : slv(4 downto 0);
 	signal dc_id : integer;
 	-- added signal to monitor wordsleft 15 oct 2020: Shivang
-    --	signal wordsleft_i  : std_logic_vector(31 downto 0) := (others=> '0');
-
+--	signal wordsleft_i  : std_logic_vector(31 downto 0) := (others=> '0');
+	signal dc_ack : sl := '0';
     -- attribute keep : string;
     -- attribute keep of stateNum : signal is "true";
 
 	attribute mark_debug : string;
     attribute mark_debug of loadQB : signal is "true";
 	attribute mark_debug of stateNum : signal is "true";
-    --	attribute mark_debug of wordsleft_i : signal is "true";
+--	attribute mark_debug of wordsleft_i : signal is "true";
 
 begin
 	cmd_int_state <= stateNum;
 	ldQBLink <= loadQB;
-    --	wordsleft_i <= r.wordsLeft;
-
+--	wordsleft_i <= r.wordsLeft;
+	
     stateNum <= "00000" when r.state = IDLE_S else             -- 0 x00
                 "00001" when r.state = PACKET_SIZE_S else      -- 1 x01
                 "00010" when r.state = PACKET_TYPE_S else      -- 2 x02
@@ -218,7 +218,7 @@ begin
         v.txDataValid := '0';
         v.txDataLast  := '0';
         rxDataReady   <= '0';
-       
+
 
         -- State machine
         case(r.state) is
@@ -303,7 +303,7 @@ begin
                     end if;
                 end if;
             when COMMAND_ID_S =>
-				v.errFlags := (others => '0');
+					 v.errFlags := (others => '0');
                 v.wordOutCnt  := (others => '0');
                 v.timeoutCnt  := (others => '0');
                 if rxDataValid = '1' then
@@ -348,11 +348,11 @@ begin
             when COMMAND_DATA_S =>
                 if rxDataValid = '1' then
                     rxDataReady <= '1';
-					v.command   := rxData;
+						  v.command   := rxData;
                     v.checksum  := r.checksum + rxData;
                     v.regAddr   := rxData(15 downto 0);
                     v.regWrData := rxData(31 downto 16);
-                    --   v.wordsLeft := r.wordsLeft - 1;      -- commented on 10/18/20 Shivang (to stop wordsleft decrement in the event of Rd/Wr.
+                 --   v.wordsLeft := r.wordsLeft - 1;      -- commented on 10/18/20 Shivang (to stop wordsleft decrement in the event of Rd/Wr.
                     -- Possible errors:
                     -- This is last, go back to IDLE
                     if rxDataLast = '1' then
@@ -364,7 +364,7 @@ begin
                     end if;
                 end if;
             when COMMAND_CHECKSUM_S =>
-                v.errFlags := (others => '0');
+					 v.errFlags := (others => '0');
                 if rxDataValid = '1' then
                     rxDataReady <= '1';
                     v.wordsLeft := r.wordsLeft - 1;
@@ -666,18 +666,27 @@ begin
     begin
         if (rising_edge(usrClk)) then
             r <= rin after GATE_DELAY_G;
-			t <= tin after GATE_DELAY_G;
+			   t <= tin after GATE_DELAY_G;
 			if EVNT_FLAG = '0' then
-				if r.state = COMMAND_DATA_S and loadQB = '1' then
-					QB_loadReg(0) <= r.commandType;                                     
-					start_load <= '1';
-				elsif r.state = COMMAND_CHECKSUM_S and loadQB = '1' then
-					QB_loadReg(0) <= r.command;
-					start_load <= '1';
-				elsif r.state = CHECK_MORE_S or r.state = ERR_RESPONSE_S then
-					start_load <= '0';
+				if start_load = '0' then
+					if r.state = COMMAND_DATA_S and loadQB = '1' then
+						QB_loadReg(0) <= r.commandType;
+						start_load <= '1';
+					elsif r.state = COMMAND_CHECKSUM_S and loadQB = '1' then
+						QB_loadReg(0) <= r.command;
+						start_load <= '0';
+					elsif r.state = CHECK_MORE_S or r.state = ERR_RESPONSE_S then
+						start_load <= '0';
+					else 
+						start_load <= '0';
+					end if;
+				
+				else
+					if dc_ack = '1' then
+						start_load <= '0';
+					end if;
 				end if;
-
+				
 			else
 				start_load <= '0';
 			end if;
@@ -747,6 +756,7 @@ begin
 	begin
         if(rising_edge(dataClk)) then
             if start_load = '1' then
+					dc_ack <= '1';
                 if dc_id = 10 then
                     QB_WrEn <= (others =>'1');
                 else
@@ -754,6 +764,7 @@ begin
                 end if;
                 QB_loadReg(1) <= QB_loadReg(0);
             else
+					dc_ack <= '0';
                 QB_WrEn <= (others =>'0');
             end if;
         end if;
