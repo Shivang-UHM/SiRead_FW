@@ -428,7 +428,7 @@ begin
 			  	v.timeoutCnt := r.timeoutCnt + 1;
                 if loadQB = '1' then -- if reading DC, listen to QBLink
                     if dc_id /= broadcastDC then --IF not broadcasting to all DCs
-                        DC_cmdRespReq(dc_id) <= '1';
+                        DC_cmdRespReq(dc_id-1) <= '1';
                         if DC_RESP_VALID(dc_id-1) = '1' then --wait for DC to send register data
                             --do not use v.regRdData to collect readback data
                             if r.noResponse = '1' then --if noResponse setting on, skip response to PC
@@ -671,10 +671,10 @@ begin
 				if start_load = '0' then
 					if r.state = COMMAND_DATA_S and loadQB = '1' then
 						QB_loadReg(0) <= r.commandType;
-						start_load <= '1';
+						start_load <= '0';
 					elsif r.state = COMMAND_CHECKSUM_S and loadQB = '1' then
 						QB_loadReg(0) <= r.command;
-						start_load <= '0';
+						start_load <= '1';
 					elsif r.state = CHECK_MORE_S or r.state = ERR_RESPONSE_S then
 						start_load <= '0';
 					else 
@@ -760,7 +760,7 @@ begin
                 if dc_id = 10 then
                     QB_WrEn <= (others =>'1');
                 else
-                    QB_WrEn(dc_id) <= '1';
+                    QB_WrEn(dc_id-1) <= '1';
                 end if;
                 QB_loadReg(1) <= QB_loadReg(0);
             else
