@@ -162,9 +162,9 @@ signal soft_trigger : std_logic :='1';
 
 --attribute keep_hierarchy: boolean;
 --attribute keep_hierarchy of Behavioral: architecture is TRUE;
---attribute mark_debug : string;
+attribute mark_debug : string;
 --attribute mark_debug of CommandIntState : signal is "true";
---attribute mark_debug of cmd_target_type : signal is "true";
+attribute mark_debug of cmd_target_type : signal is "true";
 --attribute mark_debug of trigLinkSynced : signal is "true";
 --attribute mark_debug of serialClkLocked : signal is "true";
 --attribute mark_debug of QBRst : signal is "true";
