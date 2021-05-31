@@ -362,7 +362,7 @@ U_S6EthTop : entity work.S6EthTop
          regReq      => regReq,
          regOp       => regOp,
          regAck      => regAck,
-			ldQBLink => cmd_target_type,
+	--		ldQBLink => cmd_target_type,
 			cmd_int_state => CommandIntState 
       );
 		

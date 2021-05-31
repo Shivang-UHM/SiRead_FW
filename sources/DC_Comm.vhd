@@ -85,11 +85,11 @@ i_sync <= sync;
 DC_respMUX : Process(DC_sel,evnt_trig,dc_data, DATA_CLK)
 	variable count : integer := 0;
 begin
-  IF evnt_trig = '1' THEN
-		DC_sel <= "1111";
-  ELSE
+--  IF evnt_trig = '1' THEN
+--		DC_sel <= "1111";
+--  ELSE
 		DC_sel <= rd_req;
-  END IF;
+--  END IF;
   
   IF rising_edge(DATA_CLK) THEN
   	count := count +1;
@@ -148,14 +148,23 @@ end GENERATE Gen_QBLink;
 TriggerLogic : process(dc_data, TrigFlag)
 begin
 	FOR  L in num_DC DOWNTO 0 loop 
-		IF dc_data(L)(7 downto 5) = "111" THEN --If output word contains trigger data marker
-			TrigFlag(L) <= '1'; --DC L is triggered.
+--		IF dc_data(L)(7 downto 5) = "111" THEN --If output word contains trigger data marker
+--			TrigFlag(L) <= '1'; --DC L is triggered.
+--		ELSE
+--			TrigFlag(L) <= '0'; --DC L is not triggered.
+--		END IF;
+--	END LOOP;
+--	
+		IF dc_data(0)(31 downto 29) = "100" THEN --If output word contains trigger data marker
+			TrigFlag(0) <= '1'; --DC L is triggered.
 		ELSE
-			TrigFlag(L) <= '0'; --DC L is not triggered.
+			TrigFlag(0) <= '0'; --DC L is not triggered.
 		END IF;
 	END LOOP;
 	
-	IF TrigFlag = "1111" THEN -- AND trigger flags (hardcoded for HODOSCOPE)
+--	IF TrigFlag = "1111" THEN -- AND trigger flags (hardcoded for HODOSCOPE)
+--		evnt_trig <= '1';
+	IF TrigFlag(0) = '1' THEN -- AND trigger flags (hardcoded for HODOSCOPE)
 		evnt_trig <= '1';
 		
 	ELSIF TrigLogicRst = '1' THEN

@@ -1,0 +1,9 @@
+run
+-ifmt MIXED
+-top clockgen_bytelink_exdes
+-p xc6slx150t-fgg676-3
+-ifn xst.prj
+-ofn clockgen_bytelink_exdes
+-keep_hierarchy soft 
+-equivalent_register_removal no 
+-max_fanout 65535
