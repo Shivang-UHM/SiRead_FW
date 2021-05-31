@@ -1,0 +1,39 @@
+Release 14.7 - netgen P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Command Line: netgen -filter
+C:/Users/Kevin/Dropbox/EIC-Beamtest-FW/mRICH_hodo_DC_V1/mRICH_hodo_DC_V1/hodo_dc
+_v1/iseconfig/filter.filter -intstyle ise -ar Structure -tm BMD_DC_TOP_V2 -w
+-dir netgen/synthesis -ofmt vhdl -sim BMD_DC_TOP_V2.ngc
+BMD_DC_TOP_V2_synthesis.vhd  
+
+Reading design 'BMD_DC_TOP_V2.ngc' ...
+Processing design ... 
+  Preping design's networks ...
+  Preping design's macros ...
+
+WARNING:NetListWriters:306 - Signal bus bit_count( 10 downto 0 ) on block
+   TX_DATA_SENDER is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:303 - Unable to preserve the ordering for port bus
+   OUTPUT_REG on block RX_ADDR_CHECKER using the data OUTPUT_REG<19><15:0>.
+
+WARNING:NetListWriters:306 - Signal bus rx_st( 10 downto 0 ) on block
+   RX_ADDR_CHECKER is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:303 - Unable to preserve the ordering for port bus
+   OUTPUT_REGISTERS on block DC_COMM_PARSER using the data
+   OUTPUT_REGISTERS<19><15:0>.
+
+WARNING:NetListWriters:306 - Signal bus ctrl_register( 19 downto 0 , 15 downto 0
+   ) on block BMD_DC_TOP_V2 is not reconstructed, because there are some missing
+   bus signals.
+Writing VHDL netlist
+'C:\Users\Kevin\Dropbox\EIC-Beamtest-FW\mRICH_hodo_DC_V1\mRICH_hodo_DC_V1\ise\ne
+tgen\synthesis\BMD_DC_TOP_V2_synthesis.vhd' ...
+INFO:NetListWriters:635 - The generated VHDL netlist contains Xilinx UNISIM
+   simulation primitives and has to be used with UNISIM library for correct
+   compilation and simulation. 
+Number of warnings: 5
+Number of info messages: 1
+Total memory usage is 4375948 kilobytes

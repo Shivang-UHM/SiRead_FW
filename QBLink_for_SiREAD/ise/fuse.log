@@ -1,0 +1,74 @@
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "secureip" -o "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/Check_Check_QBlink_isim_beh.exe" -prj "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/Check_Check_QBlink_beh.prj" "work.Check_Check_QBlink" 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../hodo_dc_v1/cores/CMD_FIFO_w8r32.vhd" into library work
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../hodo_dc_v1/cores/clockgen_bytelink.vhd" into library work
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../hodo_dc_v1/cores/serializationFifo.vhd" into library work
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../hodo_dc_v1/ipcore_dir/QBLtxFIFO.vhd" into library work
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/UtilityPkg.vhd" into library work
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/Encode8b10b.vhd" into library work
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/Decode8b10b.vhd" into library work
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/SyncBit.vhd" into library work
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/S6SerialInterfaceOut.vhd" into library work
+WARNING:HDLCompiler:946 - "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/S6SerialInterfaceOut.vhd" Line 64: Actual for formal port rd_en is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/S6SerialInterfaceOut.vhd" Line 129: Actual for formal port c1 is neither a static name nor a globally static expression
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/S6SerialInterfaceIn.vhd" into library work
+WARNING:HDLCompiler:946 - "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/S6SerialInterfaceIn.vhd" Line 80: Actual for formal port c1 is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/S6SerialInterfaceIn.vhd" Line 197: Actual for formal port rd_en is neither a static name nor a globally static expression
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/ByteLink.vhd" into library work
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/QBlink.vhd" into library work
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/Check_QBlink.vhd" into library work
+Parsing VHDL file "C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../hodo_dc_v1/Check_Check_QBlink.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling package utilitypkg
+Compiling package vcomponents
+Compiling package numeric_std
+Compiling package textio
+Compiling package vital_timing
+Compiling package vital_primitives
+Compiling package vpkg
+Compiling architecture dcm_sp_clock_divide_by_2_v of entity dcm_sp_clock_divide_by_2 [dcm_sp_clock_divide_by_2_default]
+Compiling architecture dcm_sp_maximum_period_check_v of entity dcm_sp_maximum_period_check [\dcm_sp_maximum_period_check("*"...]
+Compiling architecture dcm_sp_maximum_period_check_v of entity dcm_sp_maximum_period_check [\dcm_sp_maximum_period_check("*"...]
+Compiling architecture dcm_sp_clock_lost_v of entity dcm_sp_clock_lost [dcm_sp_clock_lost_default]
+Compiling architecture dcm_sp_v of entity DCM_SP [\DCM_SP(true,"*",true,false,2.0,...]
+Compiling architecture bufg_v of entity BUFG [bufg_default]
+Compiling architecture xilinx of entity clockgen_bytelink [clockgen_bytelink_default]
+Compiling architecture fdre_v of entity FDRE [\FDRE('1')\]
+Compiling architecture structural of entity SyncBit [\SyncBit(2,'1','1','1',1000)\]
+Compiling architecture behavioral of entity fifo_generator_v9_3_bhv_as [\fifo_generator_v9_3_bhv_as(10,"...]
+Compiling architecture behavioral of entity fifo_generator_v9_3_conv [\fifo_generator_v9_3_conv(0,0,4,...]
+Compiling architecture behavioral of entity fifo_generator_v9_3 [\fifo_generator_v9_3(0,0,4,"Blan...]
+Compiling architecture serializationfifo_a of entity serializationFifo [serializationfifo_default]
+Compiling architecture oddr2_v of entity ODDR2 [\ODDR2("C0",'0',"ASYNC")(1,2,1,5...]
+Compiling architecture behavioral of entity S6SerialInterfaceOut [s6serialinterfaceout_default]
+Compiling architecture iddr2_v of entity IDDR2 [\IDDR2("C0",'0','0',"SYNC")(1,2,...]
+Compiling architecture behavioral of entity S6SerialInterfaceIn [s6serialinterfacein_default]
+Compiling architecture rtl of entity Encode8b10b [\Encode8b10b(1000)\]
+Compiling architecture rtl of entity Decode8b10b [\Decode8b10b(1000)\]
+Compiling architecture rtl of entity ByteLink [\ByteLink(100,1000)\]
+Compiling architecture behavioral of entity fifo_generator_v9_3_bhv_as [\fifo_generator_v9_3_bhv_as(32,"...]
+Compiling architecture behavioral of entity fifo_generator_v9_3_bhv_preload0 [\fifo_generator_v9_3_bhv_preload...]
+Compiling architecture behavioral of entity fifo_generator_v9_3_conv [\fifo_generator_v9_3_conv(0,0,10...]
+Compiling architecture behavioral of entity fifo_generator_v9_3 [\fifo_generator_v9_3(0,0,10,"Bla...]
+Compiling architecture qbltxfifo_a of entity QBLtxFIFO [qbltxfifo_default]
+Compiling architecture behavioral of entity fifo_generator_v9_3_bhv_as [\fifo_generator_v9_3_bhv_as(8,"0...]
+Compiling architecture behavioral of entity fifo_generator_v9_3_conv [\fifo_generator_v9_3_conv(0,0,7,...]
+Compiling architecture behavioral of entity fifo_generator_v9_3 [\fifo_generator_v9_3(0,0,7,"Blan...]
+Compiling architecture cmd_fifo_w8r32_a of entity CMD_FIFO_w8r32 [cmd_fifo_w8r32_default]
+Compiling architecture behavioral of entity QBlink [qblink_default]
+Compiling architecture behavioral of entity Check_QBlink [check_qblink_default]
+Compiling architecture behavior of entity check_check_qblink
+Time Resolution for simulation is 1ps.
+Waiting for 31 sub-compilation(s) to finish...
+Compiled 74 VHDL Units
+Built simulation executable C:/FW/Hodo_v2/mRICH_hodo_DC/ise/Check_Check_QBlink_isim_beh.exe
+Fuse Memory Usage: 69760 KB
+Fuse CPU Usage: 1515 ms

@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/Kevin/Dropbox/EIC-Beamtest-FW/mRICH_hodo_DC_V1/mRICH_hodo_DC_V1/ise/TX_ReadoutControl_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="bmd_definitions" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_textio" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="textio" />
+            <top_module name="tx_readoutcontrol" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="83" />
+   <wave_markers>
+      <marker time="1000000000" label="" />
+      <marker time="1000000000" label="" />
+      <marker time="1000000000" label="" />
+   </wave_markers>
+   <wvobject fp_name="/tx_readoutcontrol/clk" type="logic" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+      <obj_property name="label">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/dcnum" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dcnum[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dcnum[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/oops" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">oops</obj_property>
+      <obj_property name="ObjectShortName">oops</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/scrod_send" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">scrod_send</obj_property>
+      <obj_property name="ObjectShortName">scrod_send</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/trig" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">trig</obj_property>
+      <obj_property name="ObjectShortName">trig</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/trig_mode" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">trig_mode[3:0]</obj_property>
+      <obj_property name="ObjectShortName">trig_mode[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/offset_dir" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">offset_dir</obj_property>
+      <obj_property name="ObjectShortName">offset_dir</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/win_offset" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">win_offset[8:0]</obj_property>
+      <obj_property name="ObjectShortName">win_offset[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/win2read" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">win2read[8:0]</obj_property>
+      <obj_property name="ObjectShortName">win2read[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/fix_win_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">fix_win_en</obj_property>
+      <obj_property name="ObjectShortName">fix_win_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/fixed_win" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">fixed_win[8:0]</obj_property>
+      <obj_property name="ObjectShortName">fixed_win[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/ped_calc_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ped_calc_en</obj_property>
+      <obj_property name="ObjectShortName">ped_calc_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/navg" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">navg[3:0]</obj_property>
+      <obj_property name="ObjectShortName">navg[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/rd_busy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rd_busy</obj_property>
+      <obj_property name="ObjectShortName">rd_busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/rd_state" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rd_state[15:0]</obj_property>
+      <obj_property name="ObjectShortName">rd_state[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/fifo_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">fifo_clk</obj_property>
+      <obj_property name="ObjectShortName">fifo_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/fifo_rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">fifo_rst</obj_property>
+      <obj_property name="ObjectShortName">fifo_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/fifo_wr_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">fifo_wr_en</obj_property>
+      <obj_property name="ObjectShortName">fifo_wr_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/fifo_din" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">fifo_din[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_din[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/fifo_full" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">fifo_full</obj_property>
+      <obj_property name="ObjectShortName">fifo_full</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/send_srt" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">send_srt</obj_property>
+      <obj_property name="ObjectShortName">send_srt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/tx_busy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">tx_busy</obj_property>
+      <obj_property name="ObjectShortName">tx_busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/smp_reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">smp_reset</obj_property>
+      <obj_property name="ObjectShortName">smp_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/cfg" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">cfg[1:0]</obj_property>
+      <obj_property name="ObjectShortName">cfg[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/ramp_len" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ramp_len[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ramp_len[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/sstin" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sstin</obj_property>
+      <obj_property name="ObjectShortName">sstin</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/wr_addrclr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wr_addrclr</obj_property>
+      <obj_property name="ObjectShortName">wr_addrclr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/clr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clr</obj_property>
+      <obj_property name="ObjectShortName">clr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/rd_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rd_en</obj_property>
+      <obj_property name="ObjectShortName">rd_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/start_ramp" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">start_ramp</obj_property>
+      <obj_property name="ObjectShortName">start_ramp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/dig_rd_rowsel_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dig_rd_rowsel_s[2:0]</obj_property>
+      <obj_property name="ObjectShortName">dig_rd_rowsel_s[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/dig_rd_colsel_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dig_rd_colsel_s[5:0]</obj_property>
+      <obj_property name="ObjectShortName">dig_rd_colsel_s[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/samplesel" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">samplesel[4:0]</obj_property>
+      <obj_property name="ObjectShortName">samplesel[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/sr_clr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sr_clr</obj_property>
+      <obj_property name="ObjectShortName">sr_clr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/sr_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sr_clk</obj_property>
+      <obj_property name="ObjectShortName">sr_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/sr_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sr_sel</obj_property>
+      <obj_property name="ObjectShortName">sr_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/smplsi_any" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">smplsi_any</obj_property>
+      <obj_property name="ObjectShortName">smplsi_any</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/done" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/trig_bits" type="array" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">trig_bits[4:0]</obj_property>
+      <obj_property name="ObjectShortName">trig_bits[4:0]</obj_property>
+      <obj_property name="label">trig_bits[4:0]</obj_property>
+      <wvobject fp_name="/tx_readoutcontrol/trig_bits[4]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">trig_bits[4]</obj_property>
+         <obj_property name="label">[4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tx_readoutcontrol/trig_bits[3]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">trig_bits[3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tx_readoutcontrol/trig_bits[2]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">trig_bits[2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tx_readoutcontrol/trig_bits[1]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">trig_bits[1]</obj_property>
+         <obj_property name="label">[1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tx_readoutcontrol/trig_bits[0]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">trig_bits[0]</obj_property>
+         <obj_property name="label">[0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/tx_dout" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tx_dout[15:0]</obj_property>
+      <obj_property name="ObjectShortName">tx_dout[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/readout_st" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">readout_st</obj_property>
+      <obj_property name="ObjectShortName">readout_st</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/rd_st" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">rd_st</obj_property>
+      <obj_property name="ObjectShortName">rd_st</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/event_num" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">event_num[23:0]</obj_property>
+      <obj_property name="ObjectShortName">event_num[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/cur_win" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">cur_win[8:0]</obj_property>
+      <obj_property name="ObjectShortName">cur_win[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/win_srt" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">win_srt[8:0]</obj_property>
+      <obj_property name="ObjectShortName">win_srt[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/win_count" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">win_count[8:0]</obj_property>
+      <obj_property name="ObjectShortName">win_count[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/smp_num" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">smp_num[4:0]</obj_property>
+      <obj_property name="ObjectShortName">smp_num[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/smp_count" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">smp_count[10:0]</obj_property>
+      <obj_property name="ObjectShortName">smp_count[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bit_count" type="other" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">bit_count</obj_property>
+      <obj_property name="ObjectShortName">bit_count</obj_property>
+      <obj_property name="label">bit_count</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/wait_count" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">wait_count</obj_property>
+      <obj_property name="ObjectShortName">wait_count</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/navgcnt" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">navgcnt</obj_property>
+      <obj_property name="ObjectShortName">navgcnt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/ncnt" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">ncnt</obj_property>
+      <obj_property name="ObjectShortName">ncnt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bit_shift" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">bit_shift</obj_property>
+      <obj_property name="ObjectShortName">bit_shift</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bram_adda" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bram_adda[10:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_adda[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bram_dina" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bram_dina[19:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_dina[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bram_douta" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bram_douta[19:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_douta[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bram_addb" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bram_addb[10:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_addb[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bram_dout" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bram_dout[11:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_dout[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bram_doutb" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bram_doutb[19:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_doutb[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/xfer_add" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">xfer_add[6:0]</obj_property>
+      <obj_property name="ObjectShortName">xfer_add[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bram2temp_add" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bram2temp_add[6:0]</obj_property>
+      <obj_property name="ObjectShortName">bram2temp_add[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/temp2bram_add" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">temp2bram_add[6:0]</obj_property>
+      <obj_property name="ObjectShortName">temp2bram_add[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/xfer_bram2temp" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">xfer_bram2temp</obj_property>
+      <obj_property name="ObjectShortName">xfer_bram2temp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/xfer_temp2bram" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">xfer_temp2bram</obj_property>
+      <obj_property name="ObjectShortName">xfer_temp2bram</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/pedarray_tmp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pedarray_tmp[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pedarray_tmp[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/pedarray_tmp2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pedarray_tmp2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pedarray_tmp2[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/dmx_wav" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dmx_wav[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dmx_wav[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/temp2bram_st" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">temp2bram_st</obj_property>
+      <obj_property name="ObjectShortName">temp2bram_st</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/tmp2bram_busy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp2bram_busy</obj_property>
+      <obj_property name="ObjectShortName">tmp2bram_busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/tmp2bram_ctr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp2bram_ctr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp2bram_ctr[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bram_we" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bram_we[0:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_we[0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bram2temp_st" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">bram2temp_st</obj_property>
+      <obj_property name="ObjectShortName">bram2temp_st</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bram2tmp_busy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bram2tmp_busy</obj_property>
+      <obj_property name="ObjectShortName">bram2tmp_busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/bram2tmp_ctr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bram2tmp_ctr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">bram2tmp_ctr[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/smp_st" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">smp_st</obj_property>
+      <obj_property name="ObjectShortName">smp_st</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/clk_cntr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_cntr[1:0]</obj_property>
+      <obj_property name="ObjectShortName">clk_cntr[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/smp_win_cnt" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">smp_win_cnt[8:0]</obj_property>
+      <obj_property name="ObjectShortName">smp_win_cnt[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/dig_st" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">dig_st</obj_property>
+      <obj_property name="ObjectShortName">dig_st</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/ramp_cnt" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">ramp_cnt</obj_property>
+      <obj_property name="ObjectShortName">ramp_cnt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/dig_busy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dig_busy</obj_property>
+      <obj_property name="ObjectShortName">dig_busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/dig_start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dig_start</obj_property>
+      <obj_property name="ObjectShortName">dig_start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/add_time" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">add_time</obj_property>
+      <obj_property name="ObjectShortName">add_time</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tx_readoutcontrol/load_time" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">load_time</obj_property>
+      <obj_property name="ObjectShortName">load_time</obj_property>
+   </wvobject>
+</wave_config>

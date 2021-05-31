@@ -1,0 +1,113 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -filter
+C:/FW/Hodo_v3/mRICH_hodo_DC/hodo_dc_v1/iseconfig/filter.filter -intstyle ise -v
+3 -s 2 -n 3 -fastpaths -xml mRICH_Hodo_DC_TOP.twx mRICH_Hodo_DC_TOP.ncd -o
+mRICH_Hodo_DC_TOP.twr mRICH_Hodo_DC_TOP.pcf
+
+Design file:              mRICH_Hodo_DC_TOP.ncd
+Physical constraint file: mRICH_Hodo_DC_TOP.pcf
+Device,package,speed:     xc6slx4,tqg144,C,-2 (PRODUCTION 1.23 2013-10-13)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock SYSCLK_N
+------------+------------+------------+------------+------------+--------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                    | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s)   | Phase  |
+------------+------------+------------+------------+------------+--------------------+--------+
+RX_N        |    0.643(R)|      SLOW  |   -0.113(R)|      SLOW  |U_DC_QBlink/sstX5Clk|   0.000|
+            |    0.702(F)|      SLOW  |   -0.174(F)|      SLOW  |U_DC_QBlink/sstX5Clk|   0.000|
+RX_P        |    0.644(R)|      SLOW  |   -0.114(R)|      SLOW  |U_DC_QBlink/sstX5Clk|   0.000|
+            |    0.703(F)|      SLOW  |   -0.175(F)|      SLOW  |U_DC_QBlink/sstX5Clk|   0.000|
+------------+------------+------------+------------+------------+--------------------+--------+
+
+Setup/Hold to clock SYSCLK_P
+------------+------------+------------+------------+------------+--------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                    | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s)   | Phase  |
+------------+------------+------------+------------+------------+--------------------+--------+
+RX_N        |    0.644(R)|      SLOW  |   -0.114(R)|      SLOW  |U_DC_QBlink/sstX5Clk|   0.000|
+            |    0.703(F)|      SLOW  |   -0.175(F)|      SLOW  |U_DC_QBlink/sstX5Clk|   0.000|
+RX_P        |    0.645(R)|      SLOW  |   -0.115(R)|      SLOW  |U_DC_QBlink/sstX5Clk|   0.000|
+            |    0.704(F)|      SLOW  |   -0.176(F)|      SLOW  |U_DC_QBlink/sstX5Clk|   0.000|
+------------+------------+------------+------------+------------+--------------------+--------+
+
+Clock SYSCLK_N to Pad
+------------+-----------------+------------+-----------------+------------+--------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                    | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s)   | Phase  |
+------------+-----------------+------------+-----------------+------------+--------------------+--------+
+DAC_LDAC    |         7.614(R)|      SLOW  |         3.379(R)|      FAST  |aux_clk             |   0.000|
+DAC_SCLK    |         7.796(R)|      SLOW  |         3.487(R)|      FAST  |aux_clk             |   0.000|
+DAC_SDI     |         7.835(R)|      SLOW  |         3.531(R)|      FAST  |aux_clk             |   0.000|
+DAC_SYNC    |         8.096(R)|      SLOW  |         3.637(R)|      FAST  |aux_clk             |   0.000|
+TX_N        |         6.004(R)|      SLOW  |         2.342(R)|      FAST  |U_DC_QBlink/sstX5Clk|   0.000|
+TX_P        |         6.058(R)|      SLOW  |         2.358(R)|      FAST  |U_DC_QBlink/sstX5Clk|   0.000|
+------------+-----------------+------------+-----------------+------------+--------------------+--------+
+
+Clock SYSCLK_P to Pad
+------------+-----------------+------------+-----------------+------------+--------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                    | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s)   | Phase  |
+------------+-----------------+------------+-----------------+------------+--------------------+--------+
+DAC_LDAC    |         7.613(R)|      SLOW  |         3.379(R)|      FAST  |aux_clk             |   0.000|
+DAC_SCLK    |         7.795(R)|      SLOW  |         3.487(R)|      FAST  |aux_clk             |   0.000|
+DAC_SDI     |         7.834(R)|      SLOW  |         3.531(R)|      FAST  |aux_clk             |   0.000|
+DAC_SYNC    |         8.095(R)|      SLOW  |         3.637(R)|      FAST  |aux_clk             |   0.000|
+TX_N        |         6.003(R)|      SLOW  |         2.342(R)|      FAST  |U_DC_QBlink/sstX5Clk|   0.000|
+TX_P        |         6.057(R)|      SLOW  |         2.358(R)|      FAST  |U_DC_QBlink/sstX5Clk|   0.000|
+------------+-----------------+------------+-----------------+------------+--------------------+--------+
+
+Clock to Setup on destination clock SYSCLK_N
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+SYSCLK_N       |    5.563|         |         |         |
+SYSCLK_P       |    5.563|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock SYSCLK_P
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+SYSCLK_N       |    5.563|         |         |         |
+SYSCLK_P       |    5.563|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Wed Oct 10 16:35:04 2018 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 274 MB
+
+
+

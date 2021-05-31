@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="HDLCompiler" num="946" delta="unknown" >"C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/S6SerialInterfaceOut.vhd" Line 64: Actual for formal port <arg fmt="%s" index="1">rd_en</arg> is neither a static name nor a globally static expression
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="946" delta="unknown" >"C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/S6SerialInterfaceOut.vhd" Line 129: Actual for formal port <arg fmt="%s" index="1">c1</arg> is neither a static name nor a globally static expression
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="946" delta="unknown" >"C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/S6SerialInterfaceIn.vhd" Line 80: Actual for formal port <arg fmt="%s" index="1">c1</arg> is neither a static name nor a globally static expression
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="946" delta="unknown" >"C:/FW/Hodo_v2/mRICH_hodo_DC/ise/../source/S6SerialInterfaceIn.vhd" Line 197: Actual for formal port <arg fmt="%s" index="1">rd_en</arg> is neither a static name nor a globally static expression
+</msg>
+
+</messages>
+

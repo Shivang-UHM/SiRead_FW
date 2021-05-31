@@ -1,0 +1,146 @@
+########################################################################################
+#     Pin mappings and timing constraints for the mRICH Hodoscope Daughtercard         #
+#																													#
+#	   Inherited from, but greatly streamlined since no waveform sampling required.		#
+########################################################################################
+# GSV 9/28/2018  --  streamlined and pin pair swap implemented
+
+## mRICH Hodoscope Daughtercard:  mRICH_Hodo_DC.ucf
+
+########## clocks ##################################
+NET "sys_clk" TNM_NET = "sys_clk";
+TIMESPEC TS_sys_clk = PERIOD "sys_clk" 40 ns HIGH 50 %;
+
+########## SCROD to daughter card communications signals ###############################
+###
+### based on 8b10b serial Bytelink
+
+## NOTE!!!  WARNING -- Pins pairs are intentionally swapped since the pins on the RJ-45 board
+##                     and DC RJ-45 have opposite convention (you've been warned)
+
+# Clock (previous pin-out listed for board reference) -- DC_CLK on SCROD side
+#NET "DATA_IN_N"	 	 LOC = "P123"; 
+#NET "DATA_IN_P"	 	 LOC = "P124"; 
+NET "SYSCLK_N"	 	 	 LOC = "P123" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #
+NET "SYSCLK_P"	 	    LOC = "P124" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #
+
+# RX  (TX on SCROD side)
+NET "RX_P"	 			 LOC = "P126"; # LVDS has to be instantiated explicitly
+NET "RX_N"	 			 LOC = "P127"; #
+
+# TX
+#NET "ORed_Trig_N"	 LOC = "P141"; 
+#NET "ORed_Trig_P" 	 LOC = "P142"; 
+NET "TX_P"		       LOC = "P141"; #RX on SCROD side
+NET "TX_N" 	          LOC = "P142"; #
+
+# SYNC -- used to align timestamps between DCs  (SYNC from SCROD side)
+#NET "MAS_ACK_N"	 	 LOC = "P1"; 
+#NET "MAS_ACK_P"	 	 LOC = "P2"; 
+NET "SYNC_P"	 	    LOC = "P1"; #  LVDS has to be instantiated explicitly
+NET "SYNC_N"	 	    LOC = "P2"; #
+
+########################################################################################
+                         
+########## FLASH interface signals #####################################################
+NET	"flash_do"      LOC = "p65";
+NET	"flash_clk"     LOC = "p70";
+NET	"flash_di"      LOC = "p64";
+NET 	"flash_cs"		 LOC = "p38"; 
+	                         
+########## dac interface signals #######################################################
+NET "DAC_SDI" 			LOC = "P46";
+NET "DAC_SCLK" 		LOC = "P47";
+NET "DAC_SYNC" 		LOC = "P48";
+NET "DAC_LDAC" 		LOC = "P50";
+# NET "DAC_SDO"    	   LOC = "p51"; -- unused Khanh's version?
+
+#####################################################################################
+###
+### TARGETX Control/Readout Signals
+###
+
+######### TARGETX programmable register interface ###################################  
+NET	"SIN"          LOC = "p143";	# data in
+NET	"SCLK"         LOC = "p5";		# serial shift clock
+NET	"PCLK"         LOC = "p6";		# parallel load clock
+NET	"SHOUT"        LOC = "p7";    # shifted data out          
+																																	 
+######### TARGETX trigger signals (to fpga) #########################################
+NET   "TX_TRIG<0>"   LOC = "p34"; #
+NET   "TX_TRIG<1>"   LOC = "p33"; 
+NET   "TX_TRIG<2>"   LOC = "p8"; 
+NET   "TX_TRIG<3>"   LOC = "p9";  
+NET   "TX_TRIG<4>"   LOC = "p10"; # multi-hit flag
+                      
+### TARGETX Control signals needed for waveform sampling -- static for mRICH Hodo
+	   
+NET	"REGCLR"         LOC = "p67";	#Keep Low!!!
+
+#####################################################################################
+###
+###   NOTE!!!
+###
+### ALL below NOT Needed holoscope!!  (static)
+########## TARGETX clocks ###########################################################
+
+NET "SSTIN_P"  		LOC = "P44" | IOSTANDARD = LVDS_25; # SSTin (sampling) clock
+NET "SSTIN_N"  		LOC = "P43" | IOSTANDARD = LVDS_25; 
+NET "WL_CLK_P" 		LOC = "P121" | IOSTANDARD = LVDS_25;# Wilkinson clock
+NET "WL_CLK_N" 		LOC = "P120" | IOSTANDARD = LVDS_25;
+
+### Timebase Control/Write Addressing   
+#NET   "MON_Timing" 	  LOC = "P32"; #for monitoring timing                           
+NET	"WR_ADDRCLR"     LOC = "p55";	# Reset Write Address
+NET	"WR1_ENA"        LOC = "p56";	# Enable Writing bank 1
+NET	"WR2_ENA"        LOC = "p119";# Enable Writing bank 2
+
+### Read Address Selection
+NET	"RD_ENA"         LOC = "p66";	
+NET	"RD_ROWSEL_S<0>" LOC = "p59";
+NET	"RD_ROWSEL_S<1>" LOC = "p61";
+NET	"RD_ROWSEL_S<2>" LOC = "p62";
+NET	"RD_COLSEL_S<0>" LOC = "p14";	
+NET	"RD_COLSEL_S<1>" LOC = "p15";
+NET	"RD_COLSEL_S<2>" LOC = "p16";
+NET	"RD_COLSEL_S<3>" LOC = "p17";
+NET	"RD_COLSEL_S<4>" LOC = "p21";
+NET	"RD_COLSEL_S<5>" LOC = "p22";
+
+### ADC control
+NET   "RAMP"         LOC = "p58";	
+NET   "DONE"         LOC = "p79";	
+NET   "CLR"				LOC = "p78"; 	 
+
+### Data readout from TARGETX (to FPGA) ###################################
+NET	"SAMPLESEL_ANY"  LOC = "p105"; # Overloaded -- Output Enable	
+NET	"SAMPLESEL_S<0>" LOC = "p111"; 
+NET	"SAMPLESEL_S<1>" LOC = "p112"; 
+NET	"SAMPLESEL_S<2>" LOC = "p114";
+NET	"SAMPLESEL_S<3>" LOC = "p115";
+NET	"SAMPLESEL_S<4>" LOC = "p116";
+# Serializer control
+NET	"SR_CLEAR"     LOC = "p94";	
+NET	"SR_CLK"       LOC = "p93";	
+NET	"SR_SEL"       LOC = "p92";	
+# 16 parallel serial streams, 1 per channel
+NET	"TX_DATA<0>"   LOC  = "p80";  
+NET	"TX_DATA<1>"   LOC  = "p81"; 
+NET	"TX_DATA<2>"   LOC  = "p82";
+NET	"TX_DATA<3>"   LOC  = "p83";
+NET	"TX_DATA<4>"   LOC  = "p84";
+NET	"TX_DATA<5>"   LOC  = "p85";
+NET	"TX_DATA<6>"   LOC  = "p87";
+NET	"TX_DATA<7>"   LOC  = "p88";
+NET	"TX_DATA<8>"   LOC  = "p95";
+NET	"TX_DATA<9>"   LOC  = "p97";
+NET	"TX_DATA<10>"  LOC  = "p98";
+NET	"TX_DATA<11>"  LOC  = "p99";
+NET	"TX_DATA<12>"  LOC  = "p100";
+NET	"TX_DATA<13>"  LOC  = "p101";
+NET	"TX_DATA<14>"  LOC  = "p102";
+NET	"TX_DATA<15>"  LOC  = "p104";
+
+################################################################################## 
+
+

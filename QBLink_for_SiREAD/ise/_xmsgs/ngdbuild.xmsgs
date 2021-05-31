@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="ConstraintSystem" num="137" delta="old" >Constraint <arg fmt="%s" index="1">&lt;NET &quot;sys_clk&quot; TNM_NET = &quot;sys_clk&quot;;&gt; [C:/FW/Hodo_v3/mRICH_hodo_DC/source/mRICH_Hodo_DC.ucf(11)]</arg>: No appropriate instances for the TNM constraint are driven by &quot;<arg fmt="%s" index="2">sys_clk</arg>&quot;.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="56" delta="old" >Constraint <arg fmt="%s" index="1">&lt;TIMESPEC TS_sys_clk = PERIOD &quot;sys_clk&quot; 40 ns HIGH 50 %;&gt; [C:/FW/Hodo_v3/mRICH_hodo_DC/source/mRICH_Hodo_DC.ucf(12)]</arg>: Unable to find an active <arg fmt="%s" index="2">&apos;TNM&apos; or &apos;TimeGrp&apos;</arg> constraint named &apos;<arg fmt="%s" index="3">sys_clk</arg>&apos;.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="191" delta="old" >The <arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">sys_clk</arg>&apos;, does not directly or indirectly drive any flip-flops, latches and/or RAMS and cannot be actively used by the referencing <arg fmt="%s" index="3">Period</arg> constraint &apos;<arg fmt="%s" index="4">TS_sys_clk</arg>&apos;. If clock manager blocks are directly or indirectly driven, a new TNM constraint will not be derived even though the referencing constraint is a PERIOD constraint unless an output of the clock manager drives flip-flops, latches or RAMs. This TNM is used in the following user PERIOD specification:
+<arg fmt="%s" index="5">&lt;TIMESPEC TS_sys_clk = PERIOD &quot;sys_clk&quot; 40 ns HIGH 50 %;&gt; [C:/FW/Hodo_v3/mRICH_hodo_DC/source/mRICH_Hodo_DC.ucf(12)]
+</arg></msg>
+
+<msg type="warning" file="ConstraintSystem" num="197" delta="old" >The following specification is invalid because the referenced TNM constraint was removed:
+<arg fmt="%s" index="1">&lt;TIMESPEC TS_sys_clk = PERIOD &quot;sys_clk&quot; 40 ns HIGH 50 %;&gt; [C:/FW/Hodo_v3/mRICH_hodo_DC/source/mRICH_Hodo_DC.ucf(12)]</arg>
+</msg>
+
+<msg type="warning" file="NgdBuild" num="478" delta="old" >clock net <arg fmt="%s" index="1">sys_clk</arg> with clock driver <arg fmt="%s" index="2">CLOCK_FANOUT/clkout1_buf</arg> drives no clock pins
+</msg>
+
+</messages>
+

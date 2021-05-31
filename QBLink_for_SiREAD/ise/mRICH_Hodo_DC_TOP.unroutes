@@ -1,0 +1,44 @@
+Release 14.7 - par P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Wed Oct 10 16:35:00 2018
+
+All signals are completely routed.
+
+WARNING:ParHelpers:362 - There are 3 sourceless signals in this design. This design will not pass the DRC check run by
+   Bitgen.
+
+   FLASH_CLK_OBUF
+   FLASH_CS_OBUF
+   FLASH_DI_OBUF
+WARNING:ParHelpers:361 - There are 26 loadless signals in this design. This design will cause Bitgen to issue DRC
+   warnings.
+
+   DONE_IBUF
+   FLASH_DO_IBUF
+   SHOUT_IBUF
+   SYNC_N_IBUF
+   SYNC_P_IBUF
+   TX_DATA<0>_IBUF
+   TX_DATA<10>_IBUF
+   TX_DATA<11>_IBUF
+   TX_DATA<12>_IBUF
+   TX_DATA<13>_IBUF
+   TX_DATA<14>_IBUF
+   TX_DATA<15>_IBUF
+   TX_DATA<1>_IBUF
+   TX_DATA<2>_IBUF
+   TX_DATA<3>_IBUF
+   TX_DATA<4>_IBUF
+   TX_DATA<5>_IBUF
+   TX_DATA<6>_IBUF
+   TX_DATA<7>_IBUF
+   TX_DATA<8>_IBUF
+   TX_DATA<9>_IBUF
+   TX_TRIG<0>_IBUF
+   TX_TRIG<1>_IBUF
+   TX_TRIG<2>_IBUF
+   TX_TRIG<3>_IBUF
+   TX_TRIG<4>_IBUF
+
+

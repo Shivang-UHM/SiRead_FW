@@ -1,0 +1,182 @@
+iMPACT Version: 14.7
+
+iMPACT log file Started on Tue Jun 19 15:11:09 2018
+
+Welcome to iMPACT
+iMPACT Version: 14.7
+Project: 'C:\Xilinx\14.7\ISE_DS\\auto_project.ipf' already exists.
+Original project has been renamed to'C:\Xilinx\14.7\ISE_DS\\auto_project_1.ipf'.
+Project: C:\Xilinx\14.7\ISE_DS\\auto_project.ipf created.
+// *** BATCH CMD : setMode -bs
+GUI --- Auto connect to cable...
+// *** BATCH CMD : setCable -port auto
+INFO:iMPACT - Digilent Plugin: Plugin Version: 2.4.4
+INFO:iMPACT - Digilent Plugin: found 1 device(s).
+INFO:iMPACT - Digilent Plugin: opening device: "JtagHs3", SN:210299A06D21
+INFO:iMPACT - Digilent Plugin: User Name: JtagHs3
+INFO:iMPACT - Digilent Plugin: Product Name: Digilent JTAG-HS3
+INFO:iMPACT - Digilent Plugin: Serial Number: 210299A06D21
+INFO:iMPACT - Digilent Plugin: Product ID: 31100153
+INFO:iMPACT - Digilent Plugin: Firmware Version: 010A
+INFO:iMPACT - Digilent Plugin: JTAG Port Number: 0
+INFO:iMPACT - Digilent Plugin: JTAG Clock Frequency: 10000000 Hz
+Attempting to identify devices in the boundary-scan chain configuration...
+INFO:iMPACT - Current time: 6/19/2018 3:11:13 PM
+// *** BATCH CMD : Identify -inferir 
+PROGRESS_START - Starting Operation.
+Identifying chain contents...'0': : Manufacturer's ID = Xilinx xc6slx4, Version : 2
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx/14.7/ISE_DS/ISE/spartan6/data/xc6slx4.bsd...
+INFO:iMPACT:501 - '1': Added Device xc6slx4 successfully.
+----------------------------------------------------------------------
+done.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM 
+// *** BATCH CMD : assignFile -p 1 -file"C:/Users/Kevin/Desktop/projects/BMD_RevB/Firmware/mRICH_hodo_DC_V1/ise/bmd_dc_top_v2.bit"
+'1': Loading file'C:/Users/Kevin/Desktop/projects/BMD_RevB/Firmware/mRICH_hodo_DC_V1/ise/bmd_dc_top_v2.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+UserID read from the bitstream file = 0xFFFFFFFF.
+Data width read from the bitstream file = 1.
+INFO:iMPACT:501 - '1': Added Device xc6slx4 successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 6/19/2018 3:11:39 PM
+// *** BATCH CMD : Program -p 1 
+'1': Programming device...
+PROGRESS_START - Starting Operation.
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+'1': Reading status register contents...
+[0] CRC ERROR                                                              :        0
+[1] IDCODE ERROR                                                           :        0
+[2] DCM LOCK STATUS                                                        :        0
+[3] GTS_CFG_B STATUS                                                       :        1
+[4] GWE STATUS                                                             :        1
+[5] GHIGH STATUS                                                           :        1
+[6] DECRYPTION ERROR                                                       :        0
+[7] DECRYPTOR ENABLE                                                       :        0
+[8] HSWAPEN PIN                                                            :        1
+[9] MODE PIN M[0]                                                          :        1
+[10] MODE PIN M[1]                                                         :        0
+[11] RESERVED                                                              :        0
+[12] INIT_B PIN                                                            :        1
+[13] DONE PIN                                                              :        1
+[14] SUSPEND STATUS                                                        :        0
+[15] FALLBACK STATUS                                                       :        0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0001 1100 1100 1100 
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT:188 - '1': Programming completed successfully.
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '1': Checking done pin....done.
+'1': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+INFO:iMPACT - Current time: 6/20/2018 11:31:40 AM
+// *** BATCH CMD : ReadIdcode -p 1 
+'1': IDCODE is '00000000000000000000000000000000'
+'1': IDCODE is '00000000' (in hex).
+'1': : Manufacturer's ID = Unknown 
+INFO:iMPACT - Current time: 6/20/2018 3:18:33 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+INFO:iMPACT - Current time: 6/20/2018 3:18:38 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+// *** BATCH CMD : assignFile -p 1 -file"C:/Users/Kevin/Desktop/projects/BMD_RevB/Firmware/mRICH_hodo_DC_V1/ise/bmd_dc_top_v2.bit"
+'1': Loading file'C:/Users/Kevin/Desktop/projects/BMD_RevB/Firmware/mRICH_hodo_DC_V1/ise/bmd_dc_top_v2.bit' ...
+done.
+UserID read from the bitstream file = 0xFFFFFFFF.
+Data width read from the bitstream file = 1.
+INFO:iMPACT:501 - '1': Added Device xc6slx4 successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 6/20/2018 3:18:51 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+INFO:iMPACT - Current time: 6/20/2018 3:18:54 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+INFO:iMPACT - Current time: 6/20/2018 3:18:57 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+// *** BATCH CMD : assignFile -p 1 -file"C:/Users/Kevin/Desktop/projects/BMD_RevB/Firmware/mRICH_hodo_DC_V1/ise/bmd_dc_top_v2.bit"
+'1': Loading file'C:/Users/Kevin/Desktop/projects/BMD_RevB/Firmware/mRICH_hodo_DC_V1/ise/bmd_dc_top_v2.bit' ...
+done.
+UserID read from the bitstream file = 0xFFFFFFFF.
+Data width read from the bitstream file = 1.
+INFO:iMPACT:501 - '1': Added Device xc6slx4 successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 6/20/2018 3:19:10 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+// *** BATCH CMD : assignFile -p 1 -file"C:/Users/Kevin/Desktop/projects/BMD_RevB/Firmware/mRICH_hodo_DC_V1/ise/bmd_dc_top_v2.bit"
+'1': Loading file'C:/Users/Kevin/Desktop/projects/BMD_RevB/Firmware/mRICH_hodo_DC_V1/ise/bmd_dc_top_v2.bit' ...
+done.
+UserID read from the bitstream file = 0xFFFFFFFF.
+Data width read from the bitstream file = 1.
+INFO:iMPACT:501 - '1': Added Device xc6slx4 successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 6/20/2018 3:19:40 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+INFO:iMPACT - Current time: 6/20/2018 3:20:38 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+INFO:iMPACT - Current time: 6/20/2018 3:20:42 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+// *** BATCH CMD : assignFile -p 1 -file"C:/Users/Kevin/Desktop/projects/BMD_RevB/Firmware/mRICH_hodo_DC_V1/ise/bmd_dc_top_v2.bit"
+'1': Loading file'C:/Users/Kevin/Desktop/projects/BMD_RevB/Firmware/mRICH_hodo_DC_V1/ise/bmd_dc_top_v2.bit' ...
+done.
+UserID read from the bitstream file = 0xFFFFFFFF.
+Data width read from the bitstream file = 1.
+INFO:iMPACT:501 - '1': Added Device xc6slx4 successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 6/20/2018 3:20:50 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+INFO:iMPACT - Current time: 6/20/2018 3:21:10 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+INFO:iMPACT - Current time: 6/20/2018 3:21:12 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+// *** BATCH CMD : assignFile -p 1 -file"C:/Users/Kevin/Desktop/projects/BMD_RevB/Firmware/mRICH_hodo_DC_V1/ise/bmd_dc_top_v2.bit"
+'1': Loading file'C:/Users/Kevin/Desktop/projects/BMD_RevB/Firmware/mRICH_hodo_DC_V1/ise/bmd_dc_top_v2.bit' ...
+done.
+UserID read from the bitstream file = 0xFFFFFFFF.
+Data width read from the bitstream file = 1.
+INFO:iMPACT:501 - '1': Added Device xc6slx4 successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 6/20/2018 3:21:24 PM
+The selected cable is being used by another application.
+ Please retry the current operation.
+Project: 'C:\Xilinx\14.7\ISE_DS\\auto_project.ipf' created.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : saveProjectFile -file"C:\Xilinx\14.7\ISE_DS\\auto_project.ipf"
+// *** BATCH CMD : setMode -bs
+INFO:iMPACT - Launching WebTalk, please refer to the webtalk log at   C:\Xilinx\14.7\ISE_DS\webtalk.log for details.
+INFO:iMPACT - Running wbtc successfully.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 1
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+ERROR:iMPACT - CseJtag_target_close failed.

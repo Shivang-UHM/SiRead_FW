@@ -1,0 +1,147 @@
+############################################################################################
+#Pin mappings and timing constraints here are based on the BMD_CENTER_DUAGHTER_CARD_RevA   #
+############################################################################################
+# KPL 5/16/2017 
+#
+########## fine timing offset adjustments for data clocks ##################################
+NET "sys_clk" TNM_NET = "sys_clk";
+TIMESPEC TS_sys_clk = PERIOD "sys_clk" 40 ns HIGH 50 %;
+
+NET "asic_clk" TNM_NET = "asic_clk";
+TIMESPEC TS_asic_clk = PERIOD "asic_clk" 16 ns HIGH 50 %;
+
+NET "DC_DC_DATA_CLK" TNM_NET = "DC_DC_DATA_CLK";
+TIMESPEC TS_DC_DATA_CLK = PERIOD "DC_DC_DATA_CLK" 40 ns HIGH 50 %;
+
+NET "aux_clk" TNM_NET = "aux_clk";
+TIMESPEC TS_AUX_CLK = PERIOD "aux_clk" 100 ns HIGH 50 %;
+
+########## scrod to daughter card communication signals ####################################
+NET "MAS_CLK_P" 	    LOC = "P134" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";# clock from scrod
+NET "MAS_CLK_N" 		 LOC = "P133" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";
+NET "MAS_DC_RX"  		 LOC = "P137";# scrod to dc data in trigger
+NET "MAS_DC_DATA_IN"  LOC = "P138";# scrod to dc data in
+NET "DC_MAS_DATA_OUT" LOC = "P139";# dc to scrod data out
+NET "DC_MAS_TX"  		 LOC = "P140";# dc to scrod data out trigger
+NET "SC_DC_TRIG"      LOC = "P141";# scrod to dc data clock
+	
+########## daughter to daughter communication signals ######################################
+NET "DC_DC_CLK_P"    LOC = "P24";# dc to dc clock
+NET "DC_DC_CLK_N"    LOC = "P23";
+NET "DC_DC_RX"  		LOC = "P32";# trigger that down stream dc has data to transmit
+NET "DC_DC_DATA_IN"  LOC = "P33";# data from down stream dc for master 
+NET "DC_DC_TX" 	   LOC = "P35";# trigger that maser is sending data
+NET "DC_DC_DATA_OUT" LOC = "P34";# data from master to dc
+NET "DC_DC_TRIG"     LOC = "P29";# dc to dc data clock
+
+########## targetx clocks ##################################################################
+NET "SSTIN_P"  		LOC = "P27";
+NET "SSTIN_N"  		LOC = "P26"; 
+NET "WL_CLK_P" 		LOC = "P115" | IOSTANDARD = LVDS_25;
+NET "WL_CLK_N" 		LOC = "P114" | IOSTANDARD = LVDS_25;
+  
+########### data readout from targetX #######################################################
+NET	"TX_DATA<0>"   LOC  = "p74";
+NET	"TX_DATA<1>"   LOC  = "p75";
+NET	"TX_DATA<2>"   LOC  = "p78";
+NET	"TX_DATA<3>"   LOC  = "p79";
+NET	"TX_DATA<4>"   LOC  = "p80";
+NET	"TX_DATA<5>"   LOC  = "p81";
+NET	"TX_DATA<6>"   LOC  = "p82";
+NET	"TX_DATA<7>"   LOC  = "p83";
+NET	"TX_DATA<8>"   LOC  = "p88";
+NET	"TX_DATA<9>"   LOC  = "p92";
+NET	"TX_DATA<10>"  LOC  = "p93";
+NET	"TX_DATA<11>"  LOC  = "p94";
+NET	"TX_DATA<12>"  LOC  = "p95";
+NET	"TX_DATA<13>"  LOC  = "p97";
+NET	"TX_DATA<14>"  LOC  = "p98";
+NET	"TX_DATA<15>"  LOC  = "p99";                               
+	                               
+######### targetx siganls #################################################################
+NET   "TX_TRIG<0>"   LOC = "p22";
+NET   "TX_TRIG<1>"   LOC = "p21";
+NET   "TX_TRIG<2>"   LOC = "p5";
+NET   "TX_TRIG<3>"   LOC = "p132";
+NET   "TX_TRIG<4>"   LOC = "p131";
+#NET   "TX_TRIG16"    LOC = "p127"; 
+                       
+NET   "RAMP"         LOC = "p16";	
+NET   "DONE"         LOC = "p8";	
+NET   "CLR"				LOC = "p9";
+      
+NET	"SIN"          LOC = "p7";
+NET	"SCLK"         LOC = "p1";
+NET	"PCLK"         LOC = "p6";
+#NET	"SHOUT"        LOC = "p2";                           
+
+NET	"SAMPLESEL_ANY"  LOC = "p100";
+NET	"SAMPLESEL_S<0>" LOC = "p101";
+NET	"SAMPLESEL_S<1>" LOC = "p102";
+NET	"SAMPLESEL_S<2>" LOC = "p104";
+NET	"SAMPLESEL_S<3>" LOC = "p111";
+NET	"SAMPLESEL_S<4>" LOC = "p112";
+
+NET	"SR_CLEAR"     LOC = "p87";
+NET	"SR_CLK"       LOC = "p85";
+NET	"SR_SEL"       LOC = "p84";
+
+NET	"RD_COLSEL_S<0>" LOC = "p126";
+NET	"RD_COLSEL_S<1>" LOC = "p124";
+NET	"RD_COLSEL_S<2>" LOC = "p123";
+NET	"RD_COLSEL_S<3>" LOC = "p121";
+NET	"RD_COLSEL_S<4>" LOC = "p120";
+NET	"RD_COLSEL_S<5>" LOC = "p119";
+	   
+NET	"REGCLR"         LOC = "p10";
+NET	"RD_ENA"         LOC = "p11";
+NET	"RD_ROWSEL_S<0>" LOC = "p15";
+NET	"RD_ROWSEL_S<1>" LOC = "p14";
+NET	"RD_ROWSEL_S<2>" LOC = "p12";
+                              
+NET	"WR_ADDRCLR"     LOC = "p118";
+NET	"WR1_ENA"        LOC = "p117";
+NET	"WR2_ENA"        LOC = "p116";
+	
+	
+########## sram interface signals ############################################################
+#NET	"SRAM_SO        LOC = "p56";
+#NET	"SRAM_SI        LOC = "p59";
+#NET	"SRAM_SCL       LOC = "p58";
+#NET	"SRAM_HOLD      LOC = "p57";
+#NET	"SRAM_CS        LOC = "p55";
+	                         
+########## flash interface signals ###########################################################
+#NET	"flash_do       LOC = "p65";
+#NET	"flash_clk      LOC = "p70";
+#NET	"flash_di       LOC = "p64";
+#NET	"flash_wp       LOC = "p62";
+#NET	"flash_hold     LOC = "p61";
+	                         
+########## dac interface signals #############################################################
+NET "DAC_SDI" 			LOC = "P46";
+#NET	"DAC_SDO"        LOC = "p51";
+NET "DAC_LDAC" 		LOC = "P50";
+NET "DAC_SYNC" 		LOC = "P48";
+NET "DAC_SCLK" 		LOC = "P47";
+	                        
+########## temperature sensor interface signals ##############################################
+#NET	"TS_EVENT"     LOC = "p43";
+#NET	"TS_SDA"       LOC = "p45";
+#NET	"TS_SCL"       LOC = "p44";
+	                       
+########## daugther card ad"dre"ss #############################################################
+NET	"DC_ADDRESS<0>" LOC = "p143";
+NET	"DC_ADDRESS<1>" LOC = "p142";
+NET	"DC_ADDRESS<2>" LOC = "p67"| pullup;
+NET	"DC_ADDRESS<3>" LOC = "p66"| pullup;
+#NET	"DC_ADDRESS<4>" LOC = "p105";#| pullup;
+	                         
+########## calibration enable ###############################################################
+NET	"CALIB_EN"  	 LOC = "p30";
+	
+########## aux pins ##########################################################################
+NET "TX_HW_TRIG" 		 LOC = "P41";
+NET "SCROD_TRIG" 	    LOC = "P40";
+
+

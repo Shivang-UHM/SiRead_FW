@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="info" file="Bitgen" num="341" delta="old" >This design is using one or more 9K Block RAMs (RAMB8BWER).  9K Block RAM initialization data, both user defined and default, requires a special bit stream format.  For more information, please reference Xilinx Answer Record 39999.
+</msg>
+
+<msg type="error" file="PhysDesignRules" num="368" delta="new" >The signal &lt;<arg fmt="%s" index="1">FLASH_CLK_OBUF</arg>&gt; is incomplete. The signal is not driven by any source pin in the design.
+</msg>
+
+<msg type="error" file="PhysDesignRules" num="368" delta="new" >The signal &lt;<arg fmt="%s" index="1">FLASH_DI_OBUF</arg>&gt; is incomplete. The signal is not driven by any source pin in the design.
+</msg>
+
+<msg type="error" file="PhysDesignRules" num="368" delta="new" >The signal &lt;<arg fmt="%s" index="1">FLASH_CS_OBUF</arg>&gt; is incomplete. The signal is not driven by any source pin in the design.
+</msg>
+
+<msg type="info" file="PhysDesignRules" num="1861" delta="new" >To achieve optimal frequency synthesis performance with the CLKFX and CLKFX180 outputs of the DCM comp <arg fmt="%s" index="1">U_DC_QBlink/U_ClockGenByteLink/dcm_sp_inst</arg>, consult the device Data Sheet.
+</msg>
+
+<msg type="warning" file="PhysDesignRules" num="2410" delta="old" >This design is using one or more 9K Block RAMs (RAMB8BWER).  9K Block RAM initialization data, both user defined and default, may be incorrect and should not be used.  For more information, please reference Xilinx Answer Record 39999.
+</msg>
+
+<msg type="error" file="PhysDesignRules" num="10" delta="new" >The network &lt;<arg fmt="%s" index="1">FLASH_CLK_OBUF</arg>&gt; is completely unrouted.
+</msg>
+
+<msg type="error" file="PhysDesignRules" num="10" delta="new" >The network &lt;<arg fmt="%s" index="1">FLASH_DI_OBUF</arg>&gt; is completely unrouted.
+</msg>
+
+<msg type="error" file="PhysDesignRules" num="10" delta="new" >The network &lt;<arg fmt="%s" index="1">FLASH_CS_OBUF</arg>&gt; is completely unrouted.
+</msg>
+
+<msg type="error" file="Bitgen" num="25" delta="new" >DRC detected <arg fmt="%d" index="1">6</arg> errors and <arg fmt="%d" index="2">1</arg> warnings.  Please see the previously displayed individual error or warning messages for more details.
+</msg>
+
+</messages>
+

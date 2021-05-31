@@ -1,0 +1,5 @@
+C:\FW\Hodo_v3\mRICH_hodo_DC\ise\mRICH_Hodo_DC_TOP.ngc 1539225209
+../hodo_dc_v1/cores/serializationFifo.ngc 1539220025
+../hodo_dc_v1/ipcore_dir/QBLtxFIFO.ngc 1539220130
+../hodo_dc_v1/cores/CMD_FIFO_w8r32.ngc 1539219861
+OK

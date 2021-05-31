@@ -1,0 +1,94 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to C:/FW/Hodo_v2/mRICH_hodo_DC/ise/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.12 secs
+ 
+--> Parameter xsthdpdir set to C:/FW/Hodo_v2/mRICH_hodo_DC/ise/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
+ 
+--> Reading design: QBlink.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\hodo_dc_v1\cores\CMD_FIFO_w8r32.vhd" into library work
+Parsing entity <CMD_FIFO_w8r32>.
+Parsing architecture <CMD_FIFO_w8r32_a> of entity <cmd_fifo_w8r32>.
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\hodo_dc_v1\cores\clockgen_bytelink.vhd" into library work
+Parsing entity <clockgen_bytelink>.
+Parsing architecture <xilinx> of entity <clockgen_bytelink>.
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\hodo_dc_v1\cores\serializationFifo.vhd" into library work
+Parsing entity <serializationFifo>.
+Parsing architecture <serializationFifo_a> of entity <serializationfifo>.
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\hodo_dc_v1\ipcore_dir\QBLtxFIFO.vhd" into library work
+Parsing entity <QBLtxFIFO>.
+Parsing architecture <QBLtxFIFO_a> of entity <qbltxfifo>.
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\source\UtilityPkg.vhd" into library work
+Parsing package <UtilityPkg>.
+Parsing package body <UtilityPkg>.
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\source\Encode8b10b.vhd" into library work
+Parsing entity <Encode8b10b>.
+Parsing architecture <rtl> of entity <encode8b10b>.
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\source\Decode8b10b.vhd" into library work
+Parsing entity <Decode8b10b>.
+Parsing architecture <rtl> of entity <decode8b10b>.
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\source\SyncBit.vhd" into library work
+Parsing entity <SyncBit>.
+Parsing architecture <structural> of entity <syncbit>.
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\source\S6SerialInterfaceOut.vhd" into library work
+Parsing entity <S6SerialInterfaceOut>.
+Parsing architecture <Behavioral> of entity <s6serialinterfaceout>.
+WARNING:HDLCompiler:946 - "C:\FW\Hodo_v2\mRICH_hodo_DC\source\S6SerialInterfaceOut.vhd" Line 64: Actual for formal port rd_en is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "C:\FW\Hodo_v2\mRICH_hodo_DC\source\S6SerialInterfaceOut.vhd" Line 129: Actual for formal port c1 is neither a static name nor a globally static expression
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\source\S6SerialInterfaceIn.vhd" into library work
+Parsing entity <S6SerialInterfaceIn>.
+Parsing architecture <Behavioral> of entity <s6serialinterfacein>.
+WARNING:HDLCompiler:946 - "C:\FW\Hodo_v2\mRICH_hodo_DC\source\S6SerialInterfaceIn.vhd" Line 80: Actual for formal port c1 is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "C:\FW\Hodo_v2\mRICH_hodo_DC\source\S6SerialInterfaceIn.vhd" Line 197: Actual for formal port rd_en is neither a static name nor a globally static expression
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\source\ByteLink.vhd" into library work
+Parsing entity <ByteLink>.
+Parsing architecture <rtl> of entity <bytelink>.
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\source\QBlink.vhd" into library work
+Parsing entity <QBlink>.
+Parsing architecture <Behavioral> of entity <qblink>.
+Parsing VHDL file "C:\FW\Hodo_v2\mRICH_hodo_DC\source\Check_QBlink.vhd" into library work
+Parsing entity <Check_QBlink>.
+Parsing architecture <Behavioral> of entity <check_qblink>.
+ERROR:HDLCompiler:849 - "C:\FW\Hodo_v2\mRICH_hodo_DC\source\Check_QBlink.vhd" Line 79: Unexpected EOF.
+VHDL file C:\FW\Hodo_v2\mRICH_hodo_DC\source\Check_QBlink.vhd ignored due to errors
+--> 
+
+Total memory usage is 305480 kilobytes
+
+Number of errors   :    1 (   0 filtered)
+Number of warnings :    4 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

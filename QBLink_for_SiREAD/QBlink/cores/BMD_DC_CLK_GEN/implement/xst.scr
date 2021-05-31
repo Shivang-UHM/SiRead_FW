@@ -1,0 +1,9 @@
+run
+-ifmt MIXED
+-top BMD_DC_CLK_GEN_exdes
+-p xc6slx4-tqg144-2
+-ifn xst.prj
+-ofn BMD_DC_CLK_GEN_exdes
+-keep_hierarchy soft 
+-equivalent_register_removal no 
+-max_fanout 65535

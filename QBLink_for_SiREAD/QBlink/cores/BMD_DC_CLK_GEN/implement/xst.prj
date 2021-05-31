@@ -1,0 +1,2 @@
+vhdl work ../../BMD_DC_CLK_GEN.vhd
+vhdl work ../example_design/BMD_DC_CLK_GEN_exdes.vhd

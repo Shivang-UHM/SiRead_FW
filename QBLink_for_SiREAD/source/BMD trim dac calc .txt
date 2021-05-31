@@ -1,0 +1,166 @@
+----------------------------------------------------------------------------------------------------------------------------------
+-----process will do calibration on trim dacs for every channel-------------------------------------------------------------------
+-----process takes to long so moved to software, if decide to us it copy in to vhdl file------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+--	
+--type dac_state is(wait_setup,
+--						config_setup,
+--						wait_config_done,
+--						start_calib,
+--						set_value,
+--						trig_count1,
+--						inc_dac_value,
+--						comp_trig_count,
+--						inc_dac_num,
+--						idle);
+--signal state : dac_state := wait_setup; 
+
+--signal cal_value        : std_logic_vector(11 downto 0) := x"FFF";
+--signal trig_num         : integer := 0;
+--signal tmp_trig_count   : integer := 0;
+--signal trig_count       : integer := 500;
+--signal calib_dac        : std_logic := '0';
+
+
+
+
+
+
+
+
+
+			
+--TRIG_COUNT_PROCESS : process(TRIGGER) 
+--begin
+--if rising_edge(TRIGGER) then
+--	if calib_dac = '1' then
+--		trig_num <= trig_num + 1;
+--	else
+--		trig_num <= 0;
+--	end if;
+--end if;
+--end process;
+--
+--DAC_PROCESS : process(CLOCK)
+--begin
+--if rising_edge(CLOCK) then
+--if OOPS_RESET = '1' then
+--	state <= idle;
+--else
+--case state is
+--	when wait_setup =>--waits for start calibration signal
+--		internal_addr   <= "00000";
+--		internal_value  <= x"000";
+--		internal_update <= '0';
+--		dac_count 		 <= "10001";
+--		cal_value       <= x"FFF";
+--		DAC_BUSY        <= '0';
+--		calib_dac       <= '0';
+--		trig_count      <= 500;
+--		tmp_trig_count  <= 0;
+--		if DAC_UPDATE = '1' then
+--			DAC_BUSY        <= '1';
+--			internal_addr   <= dac_count;
+--			state           <= config_setup;
+--		else
+--			state           <= wait_setup;
+--		end if;
+--		
+--	when config_setup =>--setup dacs in daisy chain mode
+--		internal_update <= '1';
+--		if internal_busy = '1' then
+--			internal_update <= '0';
+--			dac_count  <= dac_count - "00001";
+--			state           <= wait_config_done;
+--		else
+--			state <= config_setup;
+--		end if;
+--		
+--	when wait_config_done =>--waits for dacs to be configed
+--		internal_addr   <= dac_count;
+--		internal_value  <= cal_value;
+--		if internal_busy = '0' then
+--			if dac_count > "01111" then
+--				state <= config_setup;
+--			else
+--				internal_addr <= dac_count;
+--				state         <= start_calib;
+--			end if;
+--		else
+--			state <= wait_config_done;
+--		end if;
+--
+--	when start_calib =>--starts calibration for dac 15 to 0
+--		calib_dac     <= '0';
+--		internal_addr <= dac_count;
+--		if dac_count = "01010" then		
+--			internal_update <= '1';
+--			internal_value <= x"BF3";--value for HV
+--		else
+--			internal_update <= '1';
+--			internal_value  <= cal_value;
+--		end if;
+--		
+--		if internal_busy = '1' then
+--			internal_update <= '0';
+--			state <= set_value;
+--		else
+--			state <= start_calib;			
+--		end if;
+--		
+--	when set_value =>--sets dac value
+--		if internal_busy = '0' then
+--			calib_dac <= '1';
+--			state     <= trig_count1;
+--		else
+--			state     <= set_value;			
+--		end if;
+--			
+--	when trig_count1 =>--counts number of triggers for dac value
+--		if trig_count /= 0 then
+--			trig_count <= trig_count - 1;
+--			state      <= trig_count1;
+--		else
+--			trig_count <= 500;
+--			state      <= inc_dac_value;
+--		end if;
+--		
+--	when inc_dac_value =>--increments dac value
+--		if cal_value /= x"000" then
+--			cal_value <= cal_value - x"001";
+--			state     <= comp_trig_count;
+--		else
+--			cal_value <= x"FFF";
+--			state     <= inc_dac_num;
+--		end if;
+--		
+--	when comp_trig_count => --compares trigger count and saves dac value with higher count
+--		state <= start_calib;
+--		if tmp_trig_count > trig_num then
+--			tmp_trig_count <= tmp_trig_count;
+--		elsif tmp_trig_count <= trig_num then
+--			tmp_trig_count <= trig_num;
+--		end if;
+--
+--	when inc_dac_num =>--increment dac number and start calibration 
+--		if dac_count /= "00000" then
+--			dac_count <= dac_count - "00001";
+--			state <= start_calib;
+--		else
+--			state <= idle;
+--		end if;
+--		
+--	when idle => -- if setup is done then waits for input from outside
+--		internal_addr   <= DAC_ADDR;
+--		internal_value  <= DAC_VALUE;
+--		internal_update <= DAC_UPDATE;
+--		DAC_BUSY        <= internal_busy;
+--		state           <= idle;
+--
+--	when others =>
+--		state <= idle;
+--
+--end case;
+--end if;
+--end if;
+--end process;

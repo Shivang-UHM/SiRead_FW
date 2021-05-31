@@ -1,0 +1,2 @@
+vhdl work ../../clockgen_bytelink.vhd
+vhdl work ../example_design/clockgen_bytelink_exdes.vhd

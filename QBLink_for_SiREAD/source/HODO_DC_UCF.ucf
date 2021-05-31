@@ -1,0 +1,218 @@
+############################################################################################
+#Pin mappings and timing constraints here are based on the BMD_CENTER_DUAGHTER_CARD_RevB   #
+############################################################################################
+# KPL 5/16/2017 
+# Edited: William Roh, GSU 5/7/2018 for mRICH hodoscope
+# Re_checked by Tommy Lam on 5/17/2018
+# Re_checked by Nathan Park on 5/17/2018
+# Remodified by Julien C
+# 7/1/18
+########## Change Log ######################################################################
+#6/14/2018 (Julien C)
+# -Changed SSTIN_P & SSTIN_N
+#Old -> NET "SSTIN_P"  		LOC = "P44";
+#New -> NET "SSTIN_P"  		LOC = "P44" | IOSTANDARD = LVDS_25;  
+########## fine timing offset adjustments for data clocks ##################################
+NET "sys_clk" TNM_NET = "sys_clk";
+TIMESPEC TS_sys_clk = PERIOD "sys_clk" 40 ns HIGH 50 %;
+
+NET "asic_clk" TNM_NET = "asic_clk";
+TIMESPEC TS_asic_clk = PERIOD "asic_clk" 16 ns HIGH 50 %;
+
+NET "DC_DC_DATA_CLK" TNM_NET = "DC_DC_DATA_CLK";
+TIMESPEC TS_DC_DATA_CLK = PERIOD "DC_DC_DATA_CLK" 40 ns HIGH 50 %;
+
+NET "aux_clk" TNM_NET = "aux_clk";
+TIMESPEC TS_AUX_CLK = PERIOD "aux_clk" 100 ns HIGH 50 %;
+
+########## scrod to daughter card communication signals #################################### discrepancy between old and new names  
+#(Nathan)Double Checked
+
+
+NET "MON_Timing" 		 LOC = "P32"; #added, checked
+NET "DATA_IN_N"	 	 LOC = "P123"; #added, checked
+NET "DATA_IN_P"	 	 LOC = "P124"; #added, checked
+NET "RX_N"	 			 LOC = "P126"; #added, checked
+NET "RX_P"	 			 LOC = "P127"; #added, checked
+
+
+
+
+
+NET "ORed_Trig_N"		 LOC = "P141"; #added, checked
+NET "ORed_Trig_P" 	 LOC = "P142"; #added, checked
+NET "MAS_ACK_N"	 	 LOC = "P1"; #added, checked
+NET "MAS_ACK_P"	 	 LOC = "P2"; #added, checked
+#####
+
+
+NET "AUX1_N"	 		 LOC = "P140"; #added, checked
+NET "MAS_CLK_N" 	 LOC = "P132" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";# the other pair, renamed from MAS_CLK_N #checked - renamed to MAS...
+NET "DATA_OUT_N" 		 LOC = "P138" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #added, checked
+NET "TX_N" 				 LOC = "P134" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #added, checked
+
+#######
+
+NET "TX_P"				 LOC = "P133" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #added, checked
+NET "MAS_CLK_P" 	 LOC = "P131" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";# clock from scrod (to daughter card?), renamed from MAS_CLK_P #checked
+NET "DATA_OUT_P" 		 LOC = "P137" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #added, checked
+NET "AUX1_P"	 		 LOC = "P139"; #added, checked
+
+
+
+###Old version####
+#NET "AUX1_N"	 		 LOC = "P133"; #added, checked
+#NET "MAS_CLK_N" 	 LOC = "P131" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";# the other pair, renamed from MAS_CLK_N #checked - renamed to MAS...
+#NET "DATA_OUT_N" 		 LOC = "P137" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #added, checked
+#NET "TX_N" 				 LOC = "P139" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #added, checked
+
+#######
+
+#NET "TX_P"				 LOC = "P140" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #added, checked
+#NET "MAS_CLK_P" 	 LOC = "P132" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";# clock from scrod (to daughter card?), renamed from MAS_CLK_P #checked
+#NET "DATA_OUT_P" 		 LOC = "P138" | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; #added, checked
+#NET "AUX1_P"	 		 LOC = "P134"; #added, checked
+
+
+
+#Pin number corresponds to the pin number on Xilinx Spartan 6 (IDL_18_014, Sheet 3 of 6)
+
+
+#NET "MAS_DC_RX"  		 LOC = "P137";# scrod to dc data in trigger
+#NET "MAS_DC_DATA_IN"  LOC = "P138";# scrod to dc data in
+#NET "DC_MAS_DATA_OUT" LOC = "P139";# dc to scrod data out
+#NET "DC_MAS_TX"  		 LOC = "P140";# dc to scrod data out trigger
+#NET "SC_DC_TRIG"      LOC = "P141";# scrod to dc data clock
+	
+########## daughter to daughter communication signals ###################################### discrepancy between old and new names
+#NET "DC_DC_CLK_P"    LOC = "P24";# dc to dc clock
+#NET "DC_DC_CLK_N"    LOC = "P23";
+#NET "DC_DC_RX"  		LOC = "P32";# trigger that down stream dc has data to transmit
+#NET "DC_DC_DATA_IN"  LOC = "P33";# data from down stream dc for master 
+#NET "DC_DC_TX" 	   LOC = "P35";# trigger that maser is sending data
+#NET "DC_DC_DATA_OUT" LOC = "P34";# data from master to dc
+#NET "DC_DC_TRIG"     LOC = "P29";# dc to dc data clock
+
+########## targetx clocks ################################################################## done #(Nathan)Double Checked
+NET "SSTIN_P"  		LOC = "P44" | IOSTANDARD = LVDS_25; #checked (Julien)Changed to LVDS signal
+NET "SSTIN_N"  		LOC = "P43" | IOSTANDARD = LVDS_25; #checked (Julien)Changed to LVDS signal  -- This should be lvds
+NET "WL_CLK_P" 		LOC = "P121" | IOSTANDARD = LVDS_25;#checked
+NET "WL_CLK_N" 		LOC = "P120" | IOSTANDARD = LVDS_25;#checked
+  
+########### data readout from targetX (to FPGA) ####################################################### done #(Nathan)Double Checked
+#(Nathan) Note: "TX_DATA<n>" is DO_n+1 on schematic (see Bank 1)
+NET	"TX_DATA<0>"   LOC  = "p80"; #checked 
+NET	"TX_DATA<1>"   LOC  = "p81"; #checked
+NET	"TX_DATA<2>"   LOC  = "p82"; #checked
+NET	"TX_DATA<3>"   LOC  = "p83"; #checked
+NET	"TX_DATA<4>"   LOC  = "p84"; #checked
+NET	"TX_DATA<5>"   LOC  = "p85"; #checked
+NET	"TX_DATA<6>"   LOC  = "p87"; #checked
+NET	"TX_DATA<7>"   LOC  = "p88"; #checked
+NET	"TX_DATA<8>"   LOC  = "p95"; #checked
+NET	"TX_DATA<9>"   LOC  = "p97"; #checked
+NET	"TX_DATA<10>"  LOC  = "p98"; #checked
+NET	"TX_DATA<11>"  LOC  = "p99"; #checked
+NET	"TX_DATA<12>"  LOC  = "p100";#checked
+NET	"TX_DATA<13>"  LOC  = "p101";#checked
+NET	"TX_DATA<14>"  LOC  = "p102";#checked
+NET	"TX_DATA<15>"  LOC  = "p104";#checked          
+	                               
+#On the schematic, it starts from 1 to 16. I'm not sure if it matters but as a note. #(nathan) It doesn't matter, a vector with N bits is indexed 0 to N-1. 
+																												 # TX_data is a 16 bit vector. So the first bit DO_1 has position 0 in TX_DATA, 
+																												 # the last bit DO_16 has position 15 in TX_DATA.
+																											
+											 
+######### targetx siganls (yes/no to fpga) ################################################################# done #(Nathan) double checked
+NET   "TX_TRIG<0>"   LOC = "p34"; #checked
+NET   "TX_TRIG<1>"   LOC = "p33"; #checked
+NET   "TX_TRIG<2>"   LOC = "p8";  #checked
+NET   "TX_TRIG<3>"   LOC = "p9";  #checked
+NET   "TX_TRIG<4>"   LOC = "p10"; #checked
+#NET   "TX_TRIG16"    LOC = "p127"; Not in rev B schematic
+#(Tommy)On the schematic, it starts from 1 to 5. I'm not sure if it matters but as a note. #(Nathan) Doesn't matter. 
+ 
+
+NET   "RAMP"         LOC = "p58";	#checked
+NET   "DONE"         LOC = "p79";	#checked	
+NET   "CLR"				LOC = "p78"; 	#checked 
+
+   
+NET	"SIN"          LOC = "p143";	#checked
+NET	"SCLK"         LOC = "p5";		#checked
+NET	"PCLK"         LOC = "p6";		#checked
+NET	"SHOUT"        LOC = "p7";   # Originally commented out, added because schematic calls for it                       
+
+NET	"SAMPLESEL_ANY"  LOC = "p105"; #checked	
+NET	"SAMPLESEL_S<0>" LOC = "p111"; #checked
+NET	"SAMPLESEL_S<1>" LOC = "p112"; #checked
+NET	"SAMPLESEL_S<2>" LOC = "p114"; #checked
+NET	"SAMPLESEL_S<3>" LOC = "p115"; #checked
+NET	"SAMPLESEL_S<4>" LOC = "p116"; #checked
+#On the schematic, it starts from 1 to 5. I'm not sure if it matters but as a note
+
+
+NET	"SR_CLEAR"     LOC = "p94";	#checked	
+NET	"SR_CLK"       LOC = "p93";	#checked
+NET	"SR_SEL"       LOC = "p92";	#checked
+
+NET	"RD_COLSEL_S<0>" LOC = "p14";	#checked
+NET	"RD_COLSEL_S<1>" LOC = "p15";	#checked
+NET	"RD_COLSEL_S<2>" LOC = "p16";	#checked
+NET	"RD_COLSEL_S<3>" LOC = "p17";	#checked
+NET	"RD_COLSEL_S<4>" LOC = "p21";	#checked
+NET	"RD_COLSEL_S<5>" LOC = "p22";	#checked
+	   
+NET	"REGCLR"         LOC = "p67";	#checked
+NET	"RD_ENA"         LOC = "p66";	#checked
+NET	"RD_ROWSEL_S<0>" LOC = "p59";	#checked
+NET	"RD_ROWSEL_S<1>" LOC = "p61";	#checked
+NET	"RD_ROWSEL_S<2>" LOC = "p62";	#checked
+                              
+NET	"WR_ADDRCLR"     LOC = "p55";	#checked
+NET	"WR1_ENA"        LOC = "p56";	#checked
+NET	"WR2_ENA"        LOC = "p119";#checked
+	
+	
+########## sram interface signals ############################################################ not included in rev B, originally commented out
+#NET	"SRAM_SO        LOC = "p56";
+#NET	"SRAM_SI        LOC = "p59";
+#NET	"SRAM_SCL       LOC = "p58";
+#NET	"SRAM_HOLD      LOC = "p57";
+#NET	"SRAM_CS        LOC = "p55";
+	                         
+########## flash interface signals ########################################################### originally commented out, added in 
+#NET	"flash_do"      LOC = "p65";
+#NET	"flash_clk"     LOC = "p70";
+#NET	"flash_di"      LOC = "p64";
+#NET 	"flash_cs"		 LOC = "p38"; #didn't exist, added in because schematic calls for it
+#NET	"flash_wp       LOC = "p62"; not in rev B
+#NET	"flash_hold     LOC = "p61"; not in rev B
+	                         
+########## dac interface signals #############################################################
+NET "DAC_SDI" 			LOC = "P46";
+NET "DAC_SCLK" 		LOC = "P47";
+NET "DAC_SYNC" 		LOC = "P48";
+NET "DAC_LDAC" 		LOC = "P50";
+#NET "DAC_SDO"    	   LOC = "p51";  # originally commented out, added in
+	                        
+########## temperature sensor interface signals ############################################## not included in rev B, originally commented out
+#NET	"TS_EVENT"     LOC = "p43";
+#NET	"TS_SDA"       LOC = "p45";
+#NET	"TS_SCL"       LOC = "p44";
+	                       
+########## daugther card ad"dre"ss ############################################################# not included in rev B, commented out 
+#NET	"DC_ADDRESS<0>" LOC = "p143";
+#NET	"DC_ADDRESS<1>" LOC = "p142";
+#NET	"DC_ADDRESS<2>" LOC = "p67"| pullup;
+#NET	"DC_ADDRESS<3>" LOC = "p66"| pullup;
+#NET	"DC_ADDRESS<4>" LOC = "p105";#| pullup;
+	                         
+########## calibration enable ############################################################### not included in rev B, commented out
+#NET	"CALIB_EN"  	 LOC = "p30";
+	
+########## aux pins ########################################################################## discrepany in labeling in both revs, commented out
+#NET "TX_HW_TRIG" 		 LOC = "P41";
+#NET "SCROD_TRIG" 	    LOC = "P40";
+
+

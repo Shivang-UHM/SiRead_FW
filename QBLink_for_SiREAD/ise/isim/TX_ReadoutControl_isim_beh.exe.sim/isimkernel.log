@@ -1,0 +1,28 @@
+Command line:
+   TX_ReadoutControl_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  63428
+
+Wed Aug 01 20:54:25 2018
+
+
+ Elaboration Time: 0.390625 sec
+
+ Current Memory Usage: 5718.79 Meg
+
+ Total Signals          : 300
+ Total Nets             : 42874
+ Total Signal Drivers   : 118
+ Total Blocks           : 20
+ Total Primitive Blocks : 12
+ Total Processes        : 47
+ Total Traceable Variables  : 238
+ Total Scalar Nets and Variables : 44408
+
+ Total Simulation Time: 0.71875 sec
+
+ Current Memory Usage: 4775.07 Meg
+
+Thu Aug 02 11:00:45 2018
+

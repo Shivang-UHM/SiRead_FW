@@ -1,0 +1,897 @@
+Release 14.7 Map P.20131013 (nt64)
+Xilinx Mapping Report File for Design 'mRICH_Hodo_DC_TOP'
+
+Design Information
+------------------
+Command Line   : map -filter
+C:/FW/Hodo_v3/mRICH_hodo_DC/hodo_dc_v1/iseconfig/filter.filter -intstyle ise -p
+xc6slx4-tqg144-2 -w -logic_opt off -ol high -xe n -t 1 -xt 0 -r 4 -global_opt
+area -equivalent_register_removal on -mt 2 -detail -ir off
+-ignore_keep_hierarchy -pr off -lc off -power off -o mRICH_Hodo_DC_TOP_map.ncd
+mRICH_Hodo_DC_TOP.ngd mRICH_Hodo_DC_TOP.pcf 
+Target Device  : xc6slx4
+Target Package : tqg144
+Target Speed   : -2
+Mapper Version : spartan6 -- $Revision: 1.55 $
+Mapped Date    : Wed Oct 10 16:34:34 2018
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:    4
+Slice Logic Utilization:
+  Number of Slice Registers:                   254 out of   4,800    5%
+    Number used as Flip Flops:                 254
+    Number used as Latches:                      0
+    Number used as Latch-thrus:                  0
+    Number used as AND/OR logics:                0
+  Number of Slice LUTs:                        190 out of   2,400    7%
+    Number used as logic:                      162 out of   2,400    6%
+      Number using O6 output only:              87
+      Number using O5 output only:              11
+      Number using O5 and O6:                   64
+      Number used as ROM:                        0
+    Number used as Memory:                       2 out of   1,200    1%
+      Number used as Dual Port RAM:              0
+      Number used as Single Port RAM:            0
+      Number used as Shift Register:             2
+        Number using O6 output only:             2
+        Number using O5 output only:             0
+        Number using O5 and O6:                  0
+    Number used exclusively as route-thrus:     26
+      Number with same-slice register load:     23
+      Number with same-slice carry load:         2
+      Number with other load:                    1
+
+Slice Logic Distribution:
+  Number of occupied Slices:                    84 out of     600   14%
+  Number of MUXCYs used:                        40 out of   1,200    3%
+  Number of LUT Flip Flop pairs used:          252
+    Number with an unused Flip Flop:            53 out of     252   21%
+    Number with an unused LUT:                  62 out of     252   24%
+    Number of fully used LUT-FF pairs:         137 out of     252   54%
+    Number of unique control sets:              30
+    Number of slice register sites lost
+      to control set restrictions:             136 out of   4,800    2%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                        71 out of     102   69%
+    Number of LOCed IOBs:                       71 out of      71  100%
+    IOB Flip Flops:                              2
+    IOB Master Pads:                             3
+    IOB Slave Pads:                              3
+
+Specific Feature Utilization:
+  Number of RAMB16BWERs:                         0 out of      12    0%
+  Number of RAMB8BWERs:                          2 out of      24    8%
+  Number of BUFIO2/BUFIO2_2CLKs:                 1 out of      32    3%
+    Number used as BUFIO2s:                      1
+    Number used as BUFIO2_2CLKs:                 0
+  Number of BUFIO2FB/BUFIO2FB_2CLKs:             1 out of      32    3%
+    Number used as BUFIO2FBs:                    1
+    Number used as BUFIO2FB_2CLKs:               0
+  Number of BUFG/BUFGMUXs:                       5 out of      16   31%
+    Number used as BUFGs:                        5
+    Number used as BUFGMUX:                      0
+  Number of DCM/DCM_CLKGENs:                     1 out of       4   25%
+    Number used as DCMs:                         1
+    Number used as DCM_CLKGENs:                  0
+  Number of ILOGIC2/ISERDES2s:                   1 out of     200    1%
+    Number used as ILOGIC2s:                     1
+    Number used as ISERDES2s:                    0
+  Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     200    0%
+  Number of OLOGIC2/OSERDES2s:                   1 out of     200    1%
+    Number used as OLOGIC2s:                     1
+    Number used as OSERDES2s:                    0
+  Number of BSCANs:                              0 out of       4    0%
+  Number of BUFHs:                               0 out of     128    0%
+  Number of BUFPLLs:                             0 out of       8    0%
+  Number of BUFPLL_MCBs:                         0 out of       4    0%
+  Number of DSP48A1s:                            0 out of       8    0%
+  Number of ICAPs:                               0 out of       1    0%
+  Number of PCILOGICSEs:                         0 out of       2    0%
+  Number of PLL_ADVs:                            1 out of       2   50%
+  Number of PMVs:                                0 out of       1    0%
+  Number of STARTUPs:                            0 out of       1    0%
+  Number of SUSPEND_SYNCs:                       0 out of       1    0%
+
+Average Fanout of Non-Clock Nets:                2.72
+
+Peak Memory Usage:  512 MB
+Total REAL time to MAP completion:  13 secs 
+Total CPU time to MAP completion (all processors):   11 secs 
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Timing Report
+Section 11 - Configuration String Information
+Section 12 - Control Set Information
+Section 13 - Utilization by Hierarchy
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+WARNING:PhysDesignRules:368 - The signal <FLASH_CLK_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <FLASH_DI_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <FLASH_CS_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:2410 - This design is using one or more 9K Block RAMs
+   (RAMB8BWER).  9K Block RAM initialization data, both user defined and
+   default, may be incorrect and should not be used.  For more information,
+   please reference Xilinx Answer Record 39999.
+
+Section 3 - Informational
+-------------------------
+INFO:Map:284 - Map is running with the multi-threading option on. Map currently
+   supports the use of up to 2 processors. Based on the the user options and
+   machine load, Map will use 2 processors during this run.
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/QBlink_RX_FIFO_W8R32/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/ngwrdrst.grst.wr_rst_reg_1> in Unit <mRICH_Hodo_DC_TOP> is equivalent
+   to the following FF/Latch, which will be removed :
+   <U_DC_QBlink/QBlink_RX_FIFO_W8R32/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/ngwrdrst.grst.wr_rst_reg_0> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg_0> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following FF/Latch, which will be
+   removed :
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg_1> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gc
+   onvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg_0> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following FF/Latch, which will be
+   removed :
+   <U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gc
+   onvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg_1> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/QBlink_RX_FIFO_W8R32/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/ngwrdrst.grst.rd_rst_reg_2> in Unit <mRICH_Hodo_DC_TOP> is equivalent
+   to the following 2 FFs/Latches, which will be removed :
+   <U_DC_QBlink/QBlink_RX_FIFO_W8R32/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/ngwrdrst.grst.rd_rst_reg_1>
+   <U_DC_QBlink/QBlink_RX_FIFO_W8R32/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/ngwrdrst.grst.rd_rst_reg_0> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/QBlink_TX_FIFO_W32R8/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/g
+   ntv_or_sync_fifo.gl0.rd/gr1.rfwft/empty_fwft_i> in Unit <mRICH_Hodo_DC_TOP>
+   is equivalent to the following FF/Latch, which will be removed :
+   <U_DC_QBlink/QBlink_TX_FIFO_W32R8/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/g
+   ntv_or_sync_fifo.gl0.rd/gr1.rfwft/empty_fwft_fb> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gc
+   onvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following FF/Latch, which will be
+   removed :
+   <U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gc
+   onvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following FF/Latch, which will be
+   removed :
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gc
+   onvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_0> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following 2 FFs/Latches, which will
+   be removed :
+   <U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gc
+   onvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_1>
+   <U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gc
+   onvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_2> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/QBlink_TX_FIFO_W32R8/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/ngwrdrst.grst.wr_rst_reg_1> in Unit <mRICH_Hodo_DC_TOP> is equivalent
+   to the following FF/Latch, which will be removed :
+   <U_DC_QBlink/QBlink_TX_FIFO_W32R8/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/ngwrdrst.grst.wr_rst_reg_0> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/QBlink_TX_FIFO_W32R8/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/ngwrdrst.grst.rd_rst_reg_2> in Unit <mRICH_Hodo_DC_TOP> is equivalent
+   to the following 2 FFs/Latches, which will be removed :
+   <U_DC_QBlink/QBlink_TX_FIFO_W32R8/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/ngwrdrst.grst.rd_rst_reg_1>
+   <U_DC_QBlink/QBlink_TX_FIFO_W32R8/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/ngwrdrst.grst.rd_rst_reg_0> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/grstd1.grst_full.rst_d1> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following 2 FFs/Latches, which will
+   be removed :
+   <U_DC_QBlink/QBlink_TX_FIFO_W32R8/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/grstd1.grst_full.rst_d1>
+   <U_DC_QBlink/QBlink_RX_FIFO_W8R32/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/grstd1.grst_full.rst_d1> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_0> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following 2 FFs/Latches, which will
+   be removed :
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_1>
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_2> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/grstd1.grst_full.rst_d2> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following 2 FFs/Latches, which will
+   be removed :
+   <U_DC_QBlink/QBlink_TX_FIFO_W32R8/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/grstd1.grst_full.rst_d2>
+   <U_DC_QBlink/QBlink_RX_FIFO_W8R32/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/grstd1.grst_full.rst_d2> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/grstd1.grst_full.rst_d3> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following 2 FFs/Latches, which will
+   be removed :
+   <U_DC_QBlink/QBlink_TX_FIFO_W32R8/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/grstd1.grst_full.rst_d3>
+   <U_DC_QBlink/QBlink_RX_FIFO_W8R32/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/grstd1.grst_full.rst_d3> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/RST_FULL_GEN> in Unit <mRICH_Hodo_DC_TOP> is
+   equivalent to the following 2 FFs/Latches, which will be removed :
+   <U_DC_QBlink/QBlink_TX_FIFO_W32R8/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/RST_FULL_GEN>
+   <U_DC_QBlink/QBlink_RX_FIFO_W8R32/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/r
+   stblk/RST_FULL_GEN> 
+INFO:Xst:2260 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg_0> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following FF/Latch :
+   <U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gc
+   onvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_0> 
+INFO:Xst:2260 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_0> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following FF/Latch :
+   <U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gc
+   onvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg_0> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg_0> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following FF/Latch, which will be
+   removed :
+   <U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gc
+   onvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_0> 
+INFO:Xst:2261 - The FF/Latch
+   <U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/g
+   convfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg_0> in Unit
+   <mRICH_Hodo_DC_TOP> is equivalent to the following FF/Latch, which will be
+   removed :
+   <U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gc
+   onvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg_0> 
+INFO:LIT:243 - Logical network TX_DATA<15>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<14>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<13>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<12>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<11>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<10>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<9>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<8>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<7>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<6>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<5>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<4>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<3>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<2>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<1>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_DATA<0>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_TRIG<4>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_TRIG<3>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_TRIG<2>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_TRIG<1>_IBUF has no load.
+INFO:LIT:243 - Logical network TX_TRIG<0>_IBUF has no load.
+INFO:LIT:243 - Logical network SYNC_P_IBUF has no load.
+INFO:LIT:243 - Logical network SYNC_N_IBUF has no load.
+INFO:LIT:243 - Logical network SHOUT_IBUF has no load.
+INFO:LIT:243 - Logical network DONE_IBUF has no load.
+INFO:LIT:243 - Logical network FLASH_DO_IBUF has no load.
+INFO:LIT:243 - Logical network CLOCK_FANOUT/pll_base_inst/N2 has no load.
+INFO:LIT:243 - Logical network CLOCK_FANOUT/pll_base_inst/N3 has no load.
+INFO:LIT:243 - Logical network sys_clk has no load.
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:LIT:244 - All of the single ended outputs in this design are using slew
+   rate limited output drivers. The delay on speed critical single ended outputs
+   can be dramatically reduced by designating them as fast outputs.
+INFO:Pack:1716 - Initializing temperature to 85.000 Celsius. (default - Range:
+   0.000 to 85.000 Celsius)
+INFO:Pack:1720 - Initializing voltage to 1.140 Volts. (default - Range: 1.140 to
+   1.260 Volts)
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+INFO:Pack:1650 - Map created a placed design.
+INFO:PhysDesignRules:1861 - To achieve optimal frequency synthesis performance
+   with the CLKFX and CLKFX180 outputs of the DCM comp
+   U_DC_QBlink/U_ClockGenByteLink/dcm_sp_inst, consult the device Data Sheet.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+  35 block(s) removed
+   4 block(s) optimized away
+  36 signal(s) removed
+  97 Block(s) redundant
+
+Section 5 - Removed Logic
+-------------------------
+
+The trimmed logic report below shows the logic removed from your design due to
+sourceless or loadless signals, and VCC or ground connections.  If the removal
+of a signal or symbol results in the subsequent removal of an additional signal
+or symbol, the message explaining that second removal will be indented.  This
+indentation will be repeated as a chain of related logic is removed.
+
+To quickly locate the original cause for the removal of a chain of logic, look
+above the place where that logic is listed in the trimming report, then locate
+the lines that are least indented (begin at the leftmost edge).
+
+The signal "sys_clk" is loadless and has been removed.
+ Loadless block "CLOCK_FANOUT/clkout1_buf" (CKBUF) removed.
+  The signal "CLOCK_FANOUT/clkout0" is loadless and has been removed.
+The signal "CLOCK_FANOUT/pll_base_inst/N2" is sourceless and has been removed.
+The signal "CLOCK_FANOUT/pll_base_inst/N3" is sourceless and has been removed.
+
+The trimmed logic reported below is either:
+   1. part of a cycle
+   2. part of disabled logic
+   3. a side-effect of other trimmed logic
+
+The signal "lut441_149" is unused and has been removed.
+ Unused block "lut441_149" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<32>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_32" (FF) removed.
+The signal "lut447_152" is unused and has been removed.
+ Unused block "lut447_152" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<33>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_33" (FF) removed.
+The signal "lut453_155" is unused and has been removed.
+ Unused block "lut453_155" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<34>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_34" (FF) removed.
+The signal "lut459_158" is unused and has been removed.
+ Unused block "lut459_158" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<35>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_35" (FF) removed.
+The signal "lut465_161" is unused and has been removed.
+ Unused block "lut465_161" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<36>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_36" (FF) removed.
+The signal "lut471_164" is unused and has been removed.
+ Unused block "lut471_164" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<37>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_37" (FF) removed.
+The signal "lut477_167" is unused and has been removed.
+ Unused block "lut477_167" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<38>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_38" (FF) removed.
+The signal "lut483_170" is unused and has been removed.
+ Unused block "lut483_170" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<39>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_39" (FF) removed.
+The signal "lut489_173" is unused and has been removed.
+ Unused block "lut489_173" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<40>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_40" (FF) removed.
+The signal "lut495_176" is unused and has been removed.
+ Unused block "lut495_176" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<41>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_41" (FF) removed.
+The signal "lut501_179" is unused and has been removed.
+ Unused block "lut501_179" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<42>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_42" (FF) removed.
+The signal "lut507_182" is unused and has been removed.
+ Unused block "lut507_182" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<43>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_43" (FF) removed.
+The signal "lut513_185" is unused and has been removed.
+ Unused block "lut513_185" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<44>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_44" (FF) removed.
+The signal "lut519_188" is unused and has been removed.
+ Unused block "lut519_188" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<45>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_45" (FF) removed.
+The signal "lut525_191" is unused and has been removed.
+ Unused block "lut525_191" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<46>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_46" (FF) removed.
+The signal "lut531_194" is unused and has been removed.
+ Unused block "lut531_194" (ROM) removed.
+  The signal "MPPC_DAC/MPPC_DAC/data<47>" is unused and has been removed.
+   Unused block "MPPC_DAC/MPPC_DAC/data_47" (FF) removed.
+Unused block "CLOCK_FANOUT/pll_base_inst/XST_GND" (ZERO) removed.
+Unused block "CLOCK_FANOUT/pll_base_inst/XST_VCC" (ONE) removed.
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		XST_GND
+VCC 		XST_VCC
+LUT1 		][2476_40
+   optimized to 0
+LUT1 		][2477_41
+   optimized to 0
+
+Redundant Block(s):
+TYPE 		BLOCK
+LUT1 		MPPC_DAC/Mcount_wait_count_cy<5>_rt
+LUT1 		MPPC_DAC/Mcount_wait_count_cy<4>_rt
+LUT1 		MPPC_DAC/Mcount_wait_count_cy<3>_rt
+LUT1 		MPPC_DAC/Mcount_wait_count_cy<2>_rt
+LUT1 		MPPC_DAC/Mcount_wait_count_cy<1>_rt
+LUT1 		U_DC_QBlink/U_ByteLink/Madd_r_alignCnt[31]_GND_29_o_add_4_OUT_cy<1>_rt
+LUT1 		U_DC_QBlink/U_ByteLink/Madd_r_alignCnt[31]_GND_29_o_add_4_OUT_cy<2>_rt
+LUT1 		U_DC_QBlink/U_ByteLink/Madd_r_alignCnt[31]_GND_29_o_add_4_OUT_cy<3>_rt
+LUT1 		U_DC_QBlink/U_ByteLink/Madd_r_alignCnt[31]_GND_29_o_add_4_OUT_cy<4>_rt
+LUT1 		U_DC_QBlink/U_ByteLink/Madd_r_alignCnt[31]_GND_29_o_add_4_OUT_cy<5>_rt
+LUT1 		MPPC_DAC/Mcount_wait_count_xor<6>_rt
+LUT1 		U_DC_QBlink/U_ByteLink/Madd_r_alignCnt[31]_GND_29_o_add_4_OUT_xor<6>_rt
+INV 		][2371_0_INV_0
+INV 		][2373_2_INV_0
+INV 		][2399_12_INV_0
+INV 		][210_43_INV_0
+INV 		][217_46_INV_0
+INV 		][228_53_INV_0
+INV 		][229_54_INV_0
+INV 		][230_55_INV_0
+INV 		][231_57_INV_0
+INV 		][237_63_INV_0
+INV 		][528_95_INV_0
+INV 		][529_97_INV_0
+INV 		][530_99_INV_0
+INV 		][579_111_INV_0
+INV 		][583_115_INV_0
+INV 		][587_119_INV_0
+INV 		][779_199_INV_0
+INV 		][782_203_INV_0
+INV 		][812_221_INV_0
+INV 		][815_225_INV_0
+INV 		][818_229_INV_0
+INV 		][821_233_INV_0
+INV 		][862_249_INV_0
+INV 		][865_253_INV_0
+INV 		][942_296_INV_0
+INV 		][960_311_INV_0
+INV 		][964_314_INV_0
+INV 		][969_317_INV_0
+INV 		][974_320_INV_0
+INV 		][984_324_INV_0
+INV 		][989_327_INV_0
+INV 		][994_330_INV_0
+INV 		][1004_334_INV_0
+INV 		][1009_337_INV_0
+INV 		][1014_340_INV_0
+INV 		][1024_344_INV_0
+INV 		][1029_347_INV_0
+INV 		][1034_350_INV_0
+INV 		][1130_370_INV_0
+INV 		][1136_374_INV_0
+INV 		][1202_398_INV_0
+INV 		][1367_475_INV_0
+INV 		][1379_481_INV_0
+INV 		][1384_484_INV_0
+INV 		][1389_487_INV_0
+INV 		][1394_490_INV_0
+INV 		][1399_493_INV_0
+INV 		][1404_496_INV_0
+INV 		][1409_499_INV_0
+INV 		][1414_502_INV_0
+INV 		][1419_505_INV_0
+INV 		][1424_508_INV_0
+INV 		][1481_527_INV_0
+INV 		][1486_530_INV_0
+INV 		][1491_533_INV_0
+INV 		][1501_537_INV_0
+INV 		][1506_540_INV_0
+INV 		][1511_543_INV_0
+INV 		][1521_547_INV_0
+INV 		][1526_550_INV_0
+INV 		][1531_553_INV_0
+INV 		][1541_557_INV_0
+INV 		][1546_560_INV_0
+INV 		][1551_563_INV_0
+INV 		][1647_583_INV_0
+INV 		][1653_586_INV_0
+INV 		][1659_589_INV_0
+INV 		][1719_605_INV_0
+INV 		][1800_633_INV_0
+INV 		][1969_690_INV_0
+INV 		][1973_693_INV_0
+INV 		][1981_696_INV_0
+INV 		][1985_700_INV_0
+INV 		][1989_703_INV_0
+INV 		][1997_707_INV_0
+INV 		][2001_710_INV_0
+INV 		][2005_713_INV_0
+INV 		][2009_716_INV_0
+INV 		][2017_728_INV_0
+INV 		][2021_731_INV_0
+INV 		][2022_736_INV_0
+INV 		][2033_740_INV_0
+INV 		][2037_743_INV_0
+INV 		lut657_1001_INV_0
+INV 		][531_101_INV_0
+
+Section 6 - IOB Properties
+--------------------------
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
+|                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| CLR                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| DAC_LDAC                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| DAC_SCLK                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| DAC_SDI                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| DAC_SYNC                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| DONE                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| FLASH_CLK                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| FLASH_CS                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| FLASH_DI                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| FLASH_DO                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| PCLK                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RAMP                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RD_COLSEL_S<0>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RD_COLSEL_S<1>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RD_COLSEL_S<2>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RD_COLSEL_S<3>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RD_COLSEL_S<4>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RD_COLSEL_S<5>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RD_ENA                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RD_ROWSEL_S<0>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RD_ROWSEL_S<1>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RD_ROWSEL_S<2>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| REGCLR                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RX_N                               | IOB              | INPUT     | LVDS_25              | FALSE |          |      | IDDR         |          |          |
+| RX_P                               | IOB              | INPUT     | LVDS_25              | FALSE |          |      |              |          |          |
+| SAMPLESEL_ANY                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| SAMPLESEL_S<0>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| SAMPLESEL_S<1>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| SAMPLESEL_S<2>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| SAMPLESEL_S<3>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| SAMPLESEL_S<4>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| SCLK                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| SHOUT                              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| SIN                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| SR_CLEAR                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| SR_CLK                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| SR_SEL                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| SSTIN_N                            | IOBS             | OUTPUT    | LVDS_25              |       |          |      |              |          |          |
+| SSTIN_P                            | IOBM             | OUTPUT    | LVDS_25              |       |          |      |              |          |          |
+| SYNC_N                             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| SYNC_P                             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| SYSCLK_N                           | IOB              | INPUT     | LVDS_25              | FALSE |          |      |              |          |          |
+| SYSCLK_P                           | IOB              | INPUT     | LVDS_25              | FALSE |          |      |              |          |          |
+| TX_DATA<0>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<1>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<2>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<3>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<4>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<5>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<6>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<7>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<8>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<9>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<10>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<11>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<12>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<13>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<14>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_DATA<15>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_N                               | IOBM             | OUTPUT    | LVDS_25              |       |          |      | ODDR         |          |          |
+| TX_P                               | IOBS             | OUTPUT    | LVDS_25              |       |          |      |              |          |          |
+| TX_TRIG<0>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_TRIG<1>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_TRIG<2>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_TRIG<3>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TX_TRIG<4>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| WL_CLK_N                           | IOBS             | OUTPUT    | LVDS_25              |       |          |      |              |          |          |
+| WL_CLK_P                           | IOBM             | OUTPUT    | LVDS_25              |       |          |      |              |          |          |
+| WR1_ENA                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| WR2_ENA                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| WR_ADDRCLR                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+----------------------
+
+Section 10 - Timing Report
+--------------------------
+A logic-level (pre-route) timing report can be generated by using Xilinx static
+timing analysis tools, Timing Analyzer (GUI) or TRCE (command line), with the
+mapped NCD and PCF files. Please note that this timing report will be generated
+using estimated delay information. For accurate numbers, please generate a
+timing report with the post Place and Route NCD file.
+
+For more information about the Timing Analyzer, consult the Xilinx Timing
+Analyzer Reference Manual; for more information about TRCE, consult the Xilinx
+Command Line Tools User Guide "TRACE" chapter.
+
+Section 11 - Configuration String Details
+-----------------------------------------
+PLL_ADV "CLOCK_FANOUT/pll_base_inst/PLL_ADV":
+BANDWIDTH:OPTIMIZED
+CLK_FEEDBACK:CLKFBOUT
+COMPENSATION:SYSTEM_SYNCHRONOUS
+PLL_ADD_LEAKAGE:2
+PLL_AVDD_COMP_SET:2
+PLL_CLAMP_BYPASS:FALSE
+PLL_CLAMP_REF_SEL:1
+PLL_CLK0MX:0
+PLL_CLK1MX:0
+PLL_CLK2MX:0
+PLL_CLK3MX:0
+PLL_CLK4MX:0
+PLL_CLK5MX:0
+PLL_CLKBURST_CNT:0
+PLL_CLKBURST_ENABLE:TRUE
+PLL_CLKCNTRL:0
+PLL_CLKFBMX:0
+PLL_CLKFBOUT2_EDGE:TRUE
+PLL_CLKFBOUT2_NOCOUNT:TRUE
+PLL_CLKFBOUT_EDGE:TRUE
+PLL_CLKFBOUT_EN:FALSE
+PLL_CLKFBOUT_NOCOUNT:TRUE
+PLL_CLKOUT0_EDGE:TRUE
+PLL_CLKOUT0_EN:FALSE
+PLL_CLKOUT0_NOCOUNT:TRUE
+PLL_CLKOUT1_EDGE:TRUE
+PLL_CLKOUT1_EN:FALSE
+PLL_CLKOUT1_NOCOUNT:TRUE
+PLL_CLKOUT2_EDGE:TRUE
+PLL_CLKOUT2_EN:FALSE
+PLL_CLKOUT2_NOCOUNT:TRUE
+PLL_CLKOUT3_EDGE:TRUE
+PLL_CLKOUT3_EN:FALSE
+PLL_CLKOUT3_NOCOUNT:TRUE
+PLL_CLKOUT4_EDGE:TRUE
+PLL_CLKOUT4_EN:FALSE
+PLL_CLKOUT4_NOCOUNT:TRUE
+PLL_CLKOUT5_EDGE:TRUE
+PLL_CLKOUT5_EN:FALSE
+PLL_CLKOUT5_NOCOUNT:TRUE
+PLL_CLK_LOST_DETECT:FALSE
+PLL_CP:1
+PLL_CP_BIAS_TRIP_SHIFT:TRUE
+PLL_CP_REPL:1
+PLL_CP_RES:0
+PLL_DIRECT_PATH_CNTRL:TRUE
+PLL_DIVCLK_EDGE:TRUE
+PLL_DIVCLK_NOCOUNT:TRUE
+PLL_DVDD_COMP_SET:2
+PLL_EN:FALSE
+PLL_EN_DLY:TRUE
+PLL_EN_LEAKAGE:2
+PLL_EN_TCLK0:TRUE
+PLL_EN_TCLK1:TRUE
+PLL_EN_TCLK2:TRUE
+PLL_EN_TCLK3:TRUE
+PLL_EN_VCO0:FALSE
+PLL_EN_VCO1:FALSE
+PLL_EN_VCO2:FALSE
+PLL_EN_VCO3:FALSE
+PLL_EN_VCO4:FALSE
+PLL_EN_VCO5:FALSE
+PLL_EN_VCO6:FALSE
+PLL_EN_VCO7:FALSE
+PLL_EN_VCO_DIV1:FALSE
+PLL_EN_VCO_DIV6:TRUE
+PLL_INTFB:0
+PLL_IO_CLKSRC:0
+PLL_LFHF:3
+PLL_LOCK_FB_DLY:3
+PLL_LOCK_REF_DLY:5
+PLL_MAN_LF_EN:TRUE
+PLL_NBTI_EN:TRUE
+PLL_PFD_CNTRL:8
+PLL_PFD_DLY:1
+PLL_PWRD_CFG:FALSE
+PLL_REG_INPUT:TRUE
+PLL_RES:1
+PLL_SEL_SLIPD:FALSE
+PLL_SKEW_CNTRL:0
+PLL_TEST_IN_WINDOW:FALSE
+PLL_VDD_SEL:0
+PLL_VLFHIGH_DIS:TRUE
+CLKFBOUT_MULT = 20
+CLKFBOUT_PHASE = 0.0
+CLKIN1_PERIOD = 40
+CLKIN2_PERIOD = 40
+CLKOUT0_DIVIDE = 20
+CLKOUT0_DUTY_CYCLE = 0.5
+CLKOUT0_PHASE = 0.0
+CLKOUT1_DIVIDE = 8
+CLKOUT1_DUTY_CYCLE = 0.5
+CLKOUT1_PHASE = 0.0
+CLKOUT2_DIVIDE = 50
+CLKOUT2_DUTY_CYCLE = 0.5
+CLKOUT2_PHASE = 0.0
+CLKOUT3_DIVIDE = 1
+CLKOUT3_DUTY_CYCLE = 0.5
+CLKOUT3_PHASE = 0.0
+CLKOUT4_DIVIDE = 1
+CLKOUT4_DUTY_CYCLE = 0.5
+CLKOUT4_PHASE = 0.0
+CLKOUT5_DIVIDE = 1
+CLKOUT5_DUTY_CYCLE = 0.5
+CLKOUT5_PHASE = 0.0
+DIVCLK_DIVIDE = 1
+REF_JITTER = 0.01
+
+
+DCM "U_DC_QBlink/U_ClockGenByteLink/dcm_sp_inst":
+CLKDV_DIVIDE:2.0
+CLKIN_DIVIDE_BY_2:FALSE
+CLKOUT_PHASE_SHIFT:NONE
+CLK_FEEDBACK:1X
+DESKEW_ADJUST:5
+DFS_FREQUENCY_MODE:LOW
+DLL_FREQUENCY_MODE:LOW
+DSS_MODE:NONE
+DUTY_CYCLE_CORRECTION:TRUE
+STARTUP_WAIT:FALSE
+VERY_HIGH_FREQUENCY:FALSE
+CLKFX_DIVIDE = 2
+CLKFX_MULTIPLY = 10
+CLKIN_PERIOD = 46.882
+PHASE_SHIFT = 0
+
+
+
+Section 12 - Control Set Information
+------------------------------------
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Clock Signal         | Reset Signal                                                                                                                     | Set Signal | Enable Signal                                 | Slice Load Count | Bel Load Count |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| U_DC_QBlink/sstX5Clk |                                                                                                                                  |            |                                               | 3                | 13             |
+| U_DC_QBlink/sstX5Clk |                                                                                                                                  |            | GLOBAL_LOGIC1                                 | 1                | 1              |
+| U_DC_QBlink/sstX5Clk | U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.rst_d2     |            |                                               | 1                | 1              |
+| U_DC_QBlink/sstX5Clk | U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg<0> |            |                                               | 7                | 34             |
+| U_DC_QBlink/sstX5Clk | U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg<0> |            | ][1185_392                                    | 2                | 6              |
+| U_DC_QBlink/sstX5Clk | U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg<0> |            | ][1660_590                                    | 1                | 1              |
+| U_DC_QBlink/sstX5Clk | U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg<0> |            | lut2096_13                                    | 1                | 7              |
+| U_DC_QBlink/sstX5Clk | U_DC_QBlink/sstRst                                                                                                               |            |                                               | 2                | 5              |
+| U_DC_QBlink/sstX5Clk | U_DC_QBlink/sstX5Rst                                                                                                             |            |                                               | 6                | 18             |
+| U_DC_QBlink/sstX5Clk | U_DC_QBlink/sstX5Rst                                                                                                             |            | U_DC_QBlink/U_SerialInterfaceIn/r_bitCount<3> | 2                | 10             |
+| U_DC_QBlink/sstX5Clk | U_DC_QBlink/sstX5Rst                                                                                                             |            | U_DC_QBlink/U_SerialInterfaceOut/r_state      | 2                | 2              |
+| U_DC_QBlink/sstX5Clk | U_DC_QBlink/sstX5Rst                                                                                                             |            | ][890_272                                     | 2                | 10             |
+| U_DC_QBlink/sstX5Clk | U_DC_QBlink/sstX5Rst                                                                                                             |            | lut1654_513                                   | 2                | 8              |
+| U_DC_QBlink/sstX5Clk | ][939_293                                                                                                                        |            |                                               | 1                | 3              |
+| U_DC_QBlink/sstX5Clk | lut2765_752                                                                                                                      |            |                                               | 1                | 1              |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| asic_clk             |                                                                                                                                  |            |                                               | 5                | 13             |
+| asic_clk             |                                                                                                                                  |            | GLOBAL_LOGIC1                                 | 1                | 1              |
+| asic_clk             | U_DC_QBlink/QBlink_RX_FIFO_W8R32/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.rst_d2                        |            |                                               | 1                | 1              |
+| asic_clk             | U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg<0> |            |                                               | 8                | 33             |
+| asic_clk             | U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg<0> |            | ][1702_599                                    | 2                | 6              |
+| asic_clk             | U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg<0> |            | ][2374_3                                      | 1                | 8              |
+| asic_clk             | U_DC_QBlink/sstRst                                                                                                               |            |                                               | 11               | 30             |
+| asic_clk             | U_DC_QBlink/sstRst                                                                                                               |            | ][1896_664                                    | 3                | 7              |
+| asic_clk             | ][2022_736                                                                                                                       |            |                                               | 1                | 1              |
+| asic_clk             | lut2763_751                                                                                                                      |            |                                               | 1                | 1              |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| aux_clk              |                                                                                                                                  |            |                                               | 7                | 13             |
+| aux_clk              |                                                                                                                                  |            | lut390_124                                    | 2                | 9              |
+| aux_clk              |                                                                                                                                  |            | lut567_211                                    | 2                | 5              |
+| aux_clk              |                                                                                                                                  |            | lut832_259                                    | 1                | 1              |
+| aux_clk              | lut757_236                                                                                                                       |            | lut760_238                                    | 2                | 7              |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Section 13 - Utilization by Hierarchy
+-------------------------------------
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Module                                  | Partition | Slices*       | Slice Reg     | LUTs          | LUTRAM        | BRAM/FIFO | DSP48A1 | BUFG  | BUFIO | BUFR  | DCM   | PLL_ADV   | Full Hierarchical Name                                                                                                                                                                                                                   |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| mRICH_Hodo_DC_TOP/                      |           | 57/149        | 0/254         | 123/190       | 0/2           | 0/2       | 0/0     | 0/5   | 0/0   | 0/0   | 0/1   | 0/1       | mRICH_Hodo_DC_TOP                                                                                                                                                                                                                        |
+| +CLOCK_FANOUT                           |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 0/0     | 3/3   | 0/0   | 0/0   | 0/0   | 1/1       | mRICH_Hodo_DC_TOP/CLOCK_FANOUT                                                                                                                                                                                                           |
+| +MPPC_DAC                               |           | 8/17          | 13/35         | 13/20         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/MPPC_DAC                                                                                                                                                                                                               |
+| ++MPPC_DAC                              |           | 9/9           | 22/22         | 7/7           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/MPPC_DAC/MPPC_DAC                                                                                                                                                                                                      |
+| +U_DC_QBlink                            |           | 2/75          | 2/219         | 2/47          | 2/2           | 0/2       | 0/0     | 0/2   | 0/0   | 0/0   | 0/1   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink                                                                                                                                                                                                            |
+| ++U_ByteLink                            |           | 10/18         | 28/43         | 8/14          | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_ByteLink                                                                                                                                                                                                 |
+| +++U_Decode8b10b                        |           | 7/7           | 11/11         | 6/6           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_ByteLink/U_Decode8b10b                                                                                                                                                                                   |
+| +++U_Encode8b10b                        |           | 1/1           | 4/4           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_ByteLink/U_Encode8b10b                                                                                                                                                                                   |
+| ++U_ClockGenByteLink                    |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 0/0     | 2/2   | 0/0   | 0/0   | 1/1   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_ClockGenByteLink                                                                                                                                                                                         |
+| ++U_SerialInterfaceIn                   |           | 11/27         | 45/97         | 14/21         | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn                                                                                                                                                                                        |
+| +++U_SerializationFifo                  |           | 0/16          | 0/52          | 0/7           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo                                                                                                                                                                    |
+| ++++U0                                  |           | 0/16          | 0/52          | 0/7           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0                                                                                                                                                                 |
+| +++++xst_fifo_generator                 |           | 0/16          | 0/52          | 0/7           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator                                                                                                                                              |
+| ++++++gconvfifo.rf                      |           | 0/16          | 0/52          | 0/7           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf                                                                                                                                 |
+| +++++++grf.rf                           |           | 0/16          | 0/52          | 0/7           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf                                                                                                                          |
+| ++++++++gntv_or_sync_fifo.gcx.clkx      |           | 5/9           | 16/32         | 0/4           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx                                                                                               |
+| +++++++++gsync_stage[1].rd_stg_inst     |           | 1/1           | 4/4           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].rd_stg_inst                                                                    |
+| +++++++++gsync_stage[1].wr_stg_inst     |           | 1/1           | 4/4           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].wr_stg_inst                                                                    |
+| +++++++++gsync_stage[2].rd_stg_inst     |           | 1/1           | 4/4           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].rd_stg_inst                                                                    |
+| +++++++++gsync_stage[2].wr_stg_inst     |           | 1/1           | 4/4           | 4/4           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].wr_stg_inst                                                                    |
+| ++++++++gntv_or_sync_fifo.gl0.rd        |           | 0/3           | 0/7           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd                                                                                                 |
+| +++++++++gras.rsts                      |           | 1/1           | 1/1           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts                                                                                       |
+| +++++++++rpntr                          |           | 2/2           | 6/6           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr                                                                                           |
+| ++++++++gntv_or_sync_fifo.gl0.wr        |           | 0/3           | 0/9           | 0/2           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr                                                                                                 |
+| +++++++++gwas.wsts                      |           | 1/1           | 1/1           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts                                                                                       |
+| +++++++++wpntr                          |           | 2/2           | 8/8           | 2/2           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr                                                                                           |
+| ++++++++gntv_or_sync_fifo.mem           |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem                                                                                                    |
+| +++++++++gbm.gbmg.gbmga.ngecc.bmg       |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg                                                                           |
+| ++++++++++gnativebmg.native_blk_mem_gen |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen                                             |
+| +++++++++++valid.cstr                   |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr                                  |
+| ++++++++++++ramloop[0].ram.r            |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r                 |
+| +++++++++++++s6_noinit.ram              |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_noinit.ram   |
+| ++++++++rstblk                          |           | 1/1           | 4/4           | 1/1           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceIn/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk                                                                                                                   |
+| ++U_SerialInterfaceOut                  |           | 6/28          | 16/77         | 4/10          | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut                                                                                                                                                                                       |
+| +++U_SerializationFifo                  |           | 0/22          | 0/61          | 0/6           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo                                                                                                                                                                   |
+| ++++U0                                  |           | 0/22          | 0/61          | 0/6           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0                                                                                                                                                                |
+| +++++xst_fifo_generator                 |           | 0/22          | 0/61          | 0/6           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator                                                                                                                                             |
+| ++++++gconvfifo.rf                      |           | 0/22          | 0/61          | 0/6           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf                                                                                                                                |
+| +++++++grf.rf                           |           | 0/22          | 0/61          | 0/6           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf                                                                                                                         |
+| ++++++++gntv_or_sync_fifo.gcx.clkx      |           | 5/9           | 16/32         | 0/4           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx                                                                                              |
+| +++++++++gsync_stage[1].rd_stg_inst     |           | 1/1           | 4/4           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].rd_stg_inst                                                                   |
+| +++++++++gsync_stage[1].wr_stg_inst     |           | 1/1           | 4/4           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].wr_stg_inst                                                                   |
+| +++++++++gsync_stage[2].rd_stg_inst     |           | 1/1           | 4/4           | 4/4           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].rd_stg_inst                                                                   |
+| +++++++++gsync_stage[2].wr_stg_inst     |           | 1/1           | 4/4           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].wr_stg_inst                                                                   |
+| ++++++++gntv_or_sync_fifo.gl0.rd        |           | 0/4           | 0/8           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd                                                                                                |
+| +++++++++gras.rsts                      |           | 1/1           | 1/1           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts                                                                                      |
+| +++++++++grhf.rhf                       |           | 1/1           | 1/1           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/grhf.rhf                                                                                       |
+| +++++++++rpntr                          |           | 2/2           | 6/6           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr                                                                                          |
+| ++++++++gntv_or_sync_fifo.gl0.wr        |           | 0/2           | 0/9           | 0/1           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr                                                                                                |
+| +++++++++gwas.wsts                      |           | 1/1           | 1/1           | 0/0           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts                                                                                      |
+| +++++++++wpntr                          |           | 1/1           | 8/8           | 1/1           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr                                                                                          |
+| ++++++++gntv_or_sync_fifo.mem           |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem                                                                                                   |
+| +++++++++gbm.gbmg.gbmga.ngecc.bmg       |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg                                                                          |
+| ++++++++++gnativebmg.native_blk_mem_gen |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen                                            |
+| +++++++++++valid.cstr                   |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr                                 |
+| ++++++++++++ramloop[0].ram.r            |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r                |
+| +++++++++++++s6_noinit.ram              |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_noinit.ram  |
+| ++++++++rstblk                          |           | 7/7           | 12/12         | 1/1           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | mRICH_Hodo_DC_TOP/U_DC_QBlink/U_SerialInterfaceOut/U_SerializationFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk                                                                                                                  |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+* Slices can be packed with basic elements from multiple hierarchies.
+  Therefore, a slice will be counted in every hierarchical module
+  that each of its packed basic elements belong to.
+** For each column, there are two numbers reported <A>/<B>.
+   <A> is the number of elements that belong to that specific hierarchical module.
+   <B> is the total number of elements from that hierarchical module and any lower level
+   hierarchical modules below.
+*** The LUTRAM column counts all LUTs used as memory including RAM, ROM, and shift registers.
