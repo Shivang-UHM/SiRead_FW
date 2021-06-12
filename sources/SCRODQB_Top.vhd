@@ -71,7 +71,12 @@ entity SCRODQB_Top is
 			DC_RESET        : OUT slv(NUM_DCs DOWNTO 0);		-- Commented by Shivang on Oct 8, 2020
 			--Trigger to PMT SCRODs (mRICH)
 			GLOBAL_EVENT_P    : OUT slv(3 downto 0);
-			GLOBAL_EVENT_N    : OUT slv(3 downto 0)
+			GLOBAL_EVENT_N    : OUT slv(3 downto 0);
+
+			--External SCROD trigger
+			TRIG_IN			  : IN sl;
+			TRIG_OUT_P		  : OUT sl;
+			TRIG_OUT_N		  : OUT sl
 	);
 end SCRODQB_Top;
 
@@ -159,6 +164,8 @@ signal cmd_target_type : sl := '0';
 --for one-shot
 signal soft_trigger : std_logic :='1';
 --signal done : std_logic := '0';
+
+signal trigger_distributor : std_logic := '0';
 
 --attribute keep_hierarchy: boolean;
 --attribute keep_hierarchy of Behavioral: architecture is TRUE;
@@ -250,6 +257,14 @@ end process;
 --);
 
 
+trigger_distributor <= TRIG_IN;
+
+TRIG_BUFF : OBUFDS
+port map (
+	I  => trigger_distributor,
+	O  => TRIG_OUT_P,
+	OB => TRIG_OUT_N
+);
 
 --
 -----------------------------------------------------------------

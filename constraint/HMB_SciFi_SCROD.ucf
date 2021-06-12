@@ -146,8 +146,15 @@ NET "SYNC_P<3>" LOC = AD6 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE";
 NET "SYNC_N<3>" LOC = AF6 | IOSTANDARD = LVDS_25 | DIFF_TERM = "FALSE"; 
 ########DC RESET for mRICH##########
 
-NET "DC_RESET<0>" LOC = AC1;
-NET "DC_RESET<1>" LOC = V3;
+# NET "DC_RESET<0>" LOC = AC1;
+# NET "DC_RESET<1>" LOC = V3;
+
+
+NET "TRIG_IN" LOC = D22 | IOSTANDARD = LVCMOS33 | DIFF_TERM = "FALSE";
+
+NET "TRIG_OUT_P" 	LOC = AC2 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE"; #scrod:J1_056_AC2_P, FMC_conn:FMC1_HPC_LA11_P
+NET "TRIG_OUT_N" 	LOC = AC1 | IOSTANDARD = BLVDS_25 | DIFF_TERM = "FALSE"; #scrod:J1_055_AC1_N, FMC_conn:FMC1_HPC_LA11_N
+
 
 ########## dac interface signals #####################################################
 #NET "DAC_SDI" 			LOC = "P46";
